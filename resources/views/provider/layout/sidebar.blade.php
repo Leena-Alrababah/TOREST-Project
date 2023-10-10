@@ -32,14 +32,14 @@
 
 
       <li class="menu-item ">
-        <a href="{{ route('provider.reservations') }}" class="menu-link">
+        <a href="{{ route('admin.reservations.index') }}" class="menu-link">
           <i class="menu-icon tf-icons mdi mdi-checkbox-marked-circle-outline"></i>
           <div >Reservations</div>
         </a>
       </li>
 
       <li class="menu-item ">
-        <a href="{{ route('provider.reviews') }}" class="menu-link">
+        <a href="{{ route('admin.reviews.index') }}" class="menu-link">
           <i class="menu-icon tf-icons mdi mdi-star"></i>
           <div >Reviews</div>
         </a>

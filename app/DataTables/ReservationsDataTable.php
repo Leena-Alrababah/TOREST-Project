@@ -27,8 +27,13 @@ class ReservationsDataTable extends DataTable
                 $editBtn = "<a href='' class='btn btn-dark'><i class='far fa-edit'></i></a>";
                 $deleteBtn = "<a href='' class='btn btn-danger ml-2 delete-item'><i class='fas fa-trash-alt'></i></a>";
 
+            $user = auth()->user();
+            if ($user->role == 'provider') {
+                return "<div class='btn-group'>" . $editBtn . "</div>";
+            } else {
                 return "<div class='btn-group'>" . $editBtn . $deleteBtn . "</div>";
-            })
+            }           
+         })
 
             ->addColumn('image', function ($query) {
                 return $img = "<img width='100px' height='100px' src='" . asset($query->image) . "'></img>";
