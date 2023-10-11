@@ -12,9 +12,9 @@ use App\Http\Controllers\TableController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::middleware(['auth', 'verified'])->name('admin.')->group(function () {
+Route::middleware(['auth', 'verified'])->name('dashboard.')->group(function () {
 
-    Route::get('/admin/dashboard', [IndexController::class, 'indexAdmin'])->name('home');
+    Route::get('dashboard', [IndexController::class, 'index'])->name('home');
     Route::resource('customers', CustomerController::class);
     Route::resource('providers', ProviderController::class);
     Route::resource('admins', AdminController::class);
@@ -22,12 +22,15 @@ Route::middleware(['auth', 'verified'])->name('admin.')->group(function () {
     Route::resource('restaurants', RestaurantController::class);
     Route::resource('reservations', ReservationController::class);
     Route::resource('reviews', ReviewController::class);
+
+    Route::resource('menu', MenuController::class);
+    Route::resource('tables', TableController::class);
 });
 
 
 Route::middleware(['auth', 'provider'])->name('provider.')->group(function () {
 
-    Route::get('/provider/dashboard', [IndexController::class, 'indexProvider'])->name('home');
+    // Route::get('/provider/dashboard', [IndexController::class, 'indexProvider'])->name('home');
     // Route::get('/provider/reservations', [ReservationController::class, 'providerReservations'])->name('reservations');
     // Route::get('/provider/reservations', [ReservationController::class, 'index'])->name('reservations');
     // Route::resource('reservations', ReservationController::class);
@@ -35,8 +38,8 @@ Route::middleware(['auth', 'provider'])->name('provider.')->group(function () {
     // Route::get('/provider/reviews', [ReviewController::class, 'index'])->name('reviews');
     // Route::resource('reviews', ReviewController::class);
 
-    Route::resource('menu', MenuController::class);
-    Route::resource('tables', TableController::class);
+    // Route::resource('menu', MenuController::class);
+    // Route::resource('tables', TableController::class);
     // Route::resource('admins', AdminController::class);
 
     // Route::resource('reviews', ReviewController::class);

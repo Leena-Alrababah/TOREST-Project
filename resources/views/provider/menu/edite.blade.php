@@ -13,7 +13,7 @@
         </div>
 
         <div class="offcanvas-body mx-0 flex-grow-0">
-            <form action="{{ route('provider.menu.update', $menuItem->id) }}" method="POST" enctype="multipart/form-data"
+            <form action="{{ route('dashboard.menu.update', $menuItem->id) }}" method="POST" enctype="multipart/form-data"
                 id="menuAddForm">
                 @csrf
                 @method('PUT')

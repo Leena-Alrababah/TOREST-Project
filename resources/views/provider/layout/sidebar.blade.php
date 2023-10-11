@@ -8,7 +8,7 @@
                 <ul class="menu-inner py-1">
                     <!-- Dashboard -->
                     <li class="menu-item">
-                        <a href="{{ route('provider.home') }}" class="menu-link">
+                        <a href="{{ route('dashboard.home') }}" class="menu-link">
                             <i class="menu-icon tf-icons mdi mdi-home-circle"></i>
                             <div>Dashboard</div>
                         </a>
@@ -32,26 +32,26 @@
 
 
       <li class="menu-item ">
-        <a href="{{ route('admin.reservations.index') }}" class="menu-link">
+        <a href="{{ route('dashboard.reservations.index') }}" class="menu-link">
           <i class="menu-icon tf-icons mdi mdi-checkbox-marked-circle-outline"></i>
           <div >Reservations</div>
         </a>
       </li>
 
       <li class="menu-item ">
-        <a href="{{ route('admin.reviews.index') }}" class="menu-link">
+        <a href="{{ route('dashboard.reviews.index') }}" class="menu-link">
           <i class="menu-icon tf-icons mdi mdi-star"></i>
           <div >Reviews</div>
         </a>
       </li>
        <li class="menu-item ">
-        <a href="{{ route('provider.menu.index') }}" class="menu-link">
+        <a href="{{ route('dashboard.menu.index') }}" class="menu-link">
           <i class="menu-icon fa fa-cutlery"></i>
           <div >Menu</div>
         </a>
       </li>
       <li class="menu-item ">
-        <a href="{{ route('provider.tables.index') }}" class="menu-link">
+        <a href="{{ route('dashboard.tables.index') }}" class="menu-link">
           <i class="menu-icon tf-icons mdi mdi-table"></i>
           <div >Tables</div>
         </a>

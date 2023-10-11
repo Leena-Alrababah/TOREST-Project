@@ -61,7 +61,7 @@ class TableController extends Controller
         $table->save();
 
         // Redirect back with a success message
-        return redirect()->route('provider.tables.index')->with('success', 'Table has been added successfully.');
+        return redirect()->route('dashboard.tables.index')->with('success', 'Table has been added successfully.');
     }
 
 
@@ -105,7 +105,7 @@ class TableController extends Controller
         $table->save();
 
         // Redirect back with a success message
-        return redirect()->route('provider.tables.index')->with('success', 'Table has been updated successfully.');
+        return redirect()->route('dashboard.tables.index')->with('success', 'Table has been updated successfully.');
     }
 
 

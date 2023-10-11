@@ -13,7 +13,7 @@
         </div>
 
         <div class="offcanvas-body mx-0 flex-grow-0">
-            <form action="{{ route('provider.tables.update', $table->id) }}" method="POST" id="tableAddForm">
+            <form action="{{ route('dashboard.tables.update', $table->id) }}" method="POST" id="tableAddForm">
                 @csrf
                 @method('PUT')
                 <div class="mb-4">

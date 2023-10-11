@@ -8,7 +8,7 @@
                 <ul class="menu-inner py-1">
                     <!-- Dashboard -->
                     <li class="menu-item">
-                        <a href="{{ route('admin.home') }}" class="menu-link">
+                        <a href="{{ route('dashboard.home') }}" class="menu-link">
                             <i class="menu-icon tf-icons mdi mdi-home-circle"></i>
                             <div>Dashboard</div>
                         </a>
@@ -17,14 +17,14 @@
                     
 
                     <li class="@setActive(Route::is('customers.*')) menu-item">
-    <a href="{{ route('admin.customers.index') }}" class="menu-link">
+    <a href="{{ route('dashboard.customers.index') }}" class="menu-link">
         <i class="menu-icon tf-icons mdi mdi-account-outline"></i>
         <div>Customers</div>
     </a>
 </li>
 
 <li class="menu-item ">
-        <a href="{{ route('admin.restaurants.index') }}" class="menu-link">
+        <a href="{{ route('dashboard.restaurants.index') }}" class="menu-link">
           <i class="menu-icon tf-icons mdi mdi-store"></i>
           <div >Restaurants</div>
         </a>
@@ -32,26 +32,26 @@
 
 
       <li class="menu-item ">
-        <a href="{{ route('admin.reservations.index') }}" class="menu-link">
+        <a href="{{ route('dashboard.reservations.index') }}" class="menu-link">
           <i class="menu-icon tf-icons mdi mdi-checkbox-marked-circle-outline"></i>
           <div >Reservations</div>
         </a>
       </li>
 
       <li class="menu-item ">
-        <a href="{{ route('admin.reviews.index') }}" class="menu-link">
+        <a href="{{ route('dashboard.reviews.index') }}" class="menu-link">
           <i class="menu-icon tf-icons mdi mdi-star"></i>
           <div >Reviews</div>
         </a>
       </li>
        <li class="menu-item ">
-        <a href="{{ route('admin.admins.index') }}" class="menu-link">
+        <a href="{{ route('dashboard.admins.index') }}" class="menu-link">
           <i class="menu-icon tf-icons mdi mdi-human-male"></i>
           <div >Admin</div>
         </a>
       </li>
       <li class="menu-item ">
-        <a href="{{ route('admin.providers.index') }}" class="menu-link">
+        <a href="{{ route('dashboard.providers.index') }}" class="menu-link">
           <i class="menu-icon tf-icons mdi mdi-content-paste"></i>
           <div >Provider</div>
         </a>

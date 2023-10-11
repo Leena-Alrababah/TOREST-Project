@@ -24,10 +24,9 @@ class ProvidersDataTable extends DataTable
     {
         return (new EloquentDataTable($query))
             ->addColumn('action', function ($query) {
-                $editBtn = "<a href='' class='btn btn-dark'><i class='far fa-edit'></i></a>";
-                $deleteBtn = "<a href='' class='btn btn-danger ml-2 delete-item'><i class='fas fa-trash-alt'></i></a>";
+                $deleteBtn = "<a href='" . route('dashboard.providers.destroy', $query->id) . "' class='btn btn-danger ml-2 delete-item'><i class='fas fa-trash-alt'></i></a>";
 
-                return "<div class='btn-group'>" . $editBtn . $deleteBtn . "</div>";
+            return  $deleteBtn;
             })
 
             ->addColumn('image', function ($query) {

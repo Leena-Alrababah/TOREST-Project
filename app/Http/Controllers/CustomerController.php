@@ -65,7 +65,7 @@ class CustomerController extends Controller
 
         $customer->save();
 
-        return redirect()->route('admin.customers.index')->with('success', 'Cutomer has been successfully added.');
+        return redirect()->route('dashboard.customers.index')->with('success', 'Cutomer has been successfully added.');
     }
 
 
@@ -104,10 +104,7 @@ class CustomerController extends Controller
         $customer = User::findOrFail($id);
         // $this->deleteImage($customer->image);
         $customer->delete();
-
-
-
-
+        
         return response(['status' => 'success', 'message' => 'Deleted Successfully!']);
     }
 }

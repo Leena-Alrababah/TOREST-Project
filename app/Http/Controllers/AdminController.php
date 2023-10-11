@@ -60,7 +60,7 @@ class AdminController extends Controller
 
         $customer->save();
 
-        return redirect()->route('admin.admins.index')->with('success', 'Admin has been successfully added.');
+        return redirect()->route('dashboard.admins.index')->with('success', 'Admin has been successfully added.');
     }
 
     /**
@@ -90,8 +90,12 @@ class AdminController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $admin = User::findOrFail($id);
+        // $this->deleteImage($customer->image);
+        $admin->delete();
+
+        return response(['status' => 'success', 'message' => 'Deleted Successfully!']);
     }
 }

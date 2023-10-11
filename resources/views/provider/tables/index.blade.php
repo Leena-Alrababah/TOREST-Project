@@ -23,7 +23,7 @@
                     @endif
 
                     <button type="button" class="btn btn-success " style="margin: 20px ;">
-                        <a href="{{ route('provider.tables.create') }}" class="text-white">+ Add Table</a>
+                        <a href="{{ route('dashboard.tables.create') }}" class="text-white">+ Add Table</a>
                     </button>
 
 

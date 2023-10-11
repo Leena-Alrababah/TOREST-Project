@@ -13,7 +13,7 @@
         </div>
 
         <div class="offcanvas-body mx-0 flex-grow-0">
-            <form action="{{ route('provider.tables.store') }}" method="POST" id="tableAddForm">
+            <form action="{{ route('dashboard.tables.store') }}" method="POST" id="tableAddForm">
     @csrf
     <div class="mb-4">
         <h6 class="mb-4">Table Information</h6>

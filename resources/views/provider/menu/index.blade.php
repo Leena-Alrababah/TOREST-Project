@@ -22,7 +22,7 @@
         
     @endif
 <button type="button" class="btn btn-success " style="margin: 20px ;">
-       <a href="{{ route('provider.menu.create') }}" class="text-white">+ Add Item</a>
+       <a href="{{ route('dashboard.menu.create') }}" class="text-white">+ Add Item</a>
       </button>
 
       <div class="card-body">

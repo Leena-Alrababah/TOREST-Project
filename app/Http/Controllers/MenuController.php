@@ -56,10 +56,7 @@ class MenuController extends Controller
         // Find the restaurant associated with the provider
         $restaurant = Restaurant::where('user_id', $user->id)->first();
 
-        // if (!$restaurant) {
-        //     // Handle the case where no restaurant is found
-        //     return redirect()->route('provider.menu.index')->with('error', 'No restaurant found for the provider.');
-        // }
+        
 
         // Create a new Menu instance
         $menu = new Menu();
@@ -78,7 +75,7 @@ class MenuController extends Controller
         $menu->save();
 
         // Redirect back with a success message
-        return redirect()->route('provider.menu.index')->with('success', 'Menu item has been added successfully.');
+        return redirect()->route('dashboard.menu.index')->with('success', 'Menu item has been added successfully.');
     }
 
     /**
@@ -133,7 +130,7 @@ class MenuController extends Controller
         $menu->save();
 
         // Redirect back with a success message
-        return redirect()->route('provider.menu.index')->with('success', 'Menu item has been updated successfully.');
+        return redirect()->route('dashboard.menu.index')->with('success', 'Menu item has been updated successfully.');
     }
 
 

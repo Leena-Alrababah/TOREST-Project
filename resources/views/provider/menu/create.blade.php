@@ -13,7 +13,7 @@
         </div>
 
         <div class="offcanvas-body mx-0 flex-grow-0">
-            <form action="{{ route('provider.menu.store') }}"  method="POST" enctype="multipart/form-data" id="menuAddForm">
+            <form action="{{ route('dashboard.menu.store') }}"  method="POST" enctype="multipart/form-data" id="menuAddForm">
                 @csrf
                 <div class="mb-4">
                     <h6 class="mb-4">Menu Item Information</h6>

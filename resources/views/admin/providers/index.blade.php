@@ -27,7 +27,7 @@
     @endif
 
                 <button type="button" class="btn btn-success" style="margin: 20px ;">
-                    <a href="{{ route('admin.providers.create') }}" class="text-white">+ Add Provider</a>
+                    <a href="{{ route('dashboard.providers.create') }}" class="text-white">+ Add Provider</a>
                 </button>
                 <div class="card-body">
                     {{ $dataTable->table() }}

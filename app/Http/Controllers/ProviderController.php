@@ -60,7 +60,7 @@ class ProviderController extends Controller
 
         $customer->save();
 
-        return redirect()->route('admin.providers.index')->with('success', 'Provider has been successfully added.');
+        return redirect()->route('dashboard.providers.index')->with('success', 'Provider has been successfully added.');
     }
 
     /**
@@ -90,8 +90,12 @@ class ProviderController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $provider = User::findOrFail($id);
+        // $this->deleteImage($customer->image);
+        $provider->delete();
+
+        return response(['status' => 'success', 'message' => 'Deleted Successfully!']);
     }
 }

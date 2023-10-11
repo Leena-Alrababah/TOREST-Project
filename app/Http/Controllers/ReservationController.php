@@ -17,7 +17,6 @@ class ReservationController extends Controller
     {
         $isAdmin = auth()->user()->role == 'admin';
 
-        // Determine which view to render based on the user's role
         if ($isAdmin) {
             return $dataTable->render('admin.reservations.index');
         } else {

@@ -24,17 +24,17 @@ class RestaurantsDataTable extends DataTable
     {
         return (new EloquentDataTable($query))
             ->addColumn('action', function ($query) {
-                $editBtn = "<a href='' class='btn btn-dark'><i class='far fa-edit'></i></a>";
-                $deleteBtn = "<a href='' class='btn btn-danger ml-2 delete-item'><i class='fas fa-trash-alt'></i></a>";
+                $editBtn = "<a href='" . route('dashboard.restaurants.edit', $query->id) . "' class='btn btn-dark'><i class='far fa-edit'></i></a>";
+                $deleteBtn = "<a href='" . route('dashboard.restaurants.destroy', $query->id) . "' class='btn btn-danger ml-2 delete-item'><i class='fas fa-trash-alt'></i></a>";
 
                 return "<div class='btn-group'>" . $editBtn . $deleteBtn . "</div>";
             })
 
             ->addColumn('image', function ($query) {
-                return $img = "<img width='100px' height='100px' src='" . asset($query->image) . "'></img>";
+                return $img = "<img width='100px' height='100px' src='" . asset($query->image1) . "'></img>";
             })
 
-            ->addColumn('Owner', function ($query) {
+            ->addColumn('Provider', function ($query) {
                 if ($query->user) {
                     return $query->user->name;
                 } else {
@@ -91,7 +91,7 @@ class RestaurantsDataTable extends DataTable
         return [
             Column::make('image')->width(150),
             Column::make('name'),
-            Column::make('Owner'),
+            Column::make('Provider'),
             Column::make('location')->width(300),
             Column::make('discount_percentage'),
             Column::computed('action')

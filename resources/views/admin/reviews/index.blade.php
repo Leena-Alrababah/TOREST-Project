@@ -15,7 +15,7 @@
     <div class="card-datatable table-responsive">
 
 <button type="button" class="btn btn-success " style="margin: 20px ;">
-       <a href="./restaurant-add.html" class="text-white">+ Add Restaurant</a>
+       <a href="./restaurant-add.html" class="text-white">+ Add Review</a>
       </button>
 
       <div class="card-body">

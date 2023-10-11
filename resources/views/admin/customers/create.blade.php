@@ -13,7 +13,7 @@
         </div>
 
         <div class="offcanvas-body mx-0 flex-grow-0">
-            <form action="{{ route('admin.customers.store') }}" method="POST" enctype="multipart/form-data"
+            <form action="{{ route('dashboard.customers.store') }}" method="POST" enctype="multipart/form-data"
                 class="ecommerce-customer-add pt-0" id="eCommerceCustomerAddForm">
                 @csrf
                 <div class="ecommerce-customer-add-basic mb-4">

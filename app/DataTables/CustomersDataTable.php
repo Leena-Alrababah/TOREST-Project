@@ -24,11 +24,7 @@ class CustomersDataTable extends DataTable
     {
         return (new EloquentDataTable($query))
             ->addColumn('action', function ($query) {
-                // $editBtn = "<a href='' class='btn btn-dark'><i class='far fa-edit'></i></a>";
-                // $deleteBtn = "<a href='" .  route('admin.customers.destroy', $query->id)  . "' class='btn btn-danger ml-2 delete-item'><i class='fas fa-trash-alt'></i></a>";
-                $deleteBtn = "<a href='" . route('admin.customers.destroy', $query->id) . "' class='btn btn-danger ml-2 delete-item'><i class='fas fa-trash-alt'></i></a>";
-
-
+                $deleteBtn = "<a href='" . route('dashboard.customers.destroy', $query->id) . "' class='btn btn-danger ml-2 delete-item'><i class='fas fa-trash-alt'></i></a>";
             return  $deleteBtn;
             })
 
