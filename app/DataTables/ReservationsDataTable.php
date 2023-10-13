@@ -29,33 +29,25 @@ class ReservationsDataTable extends DataTable
 
             $user = auth()->user();
             if ($user->role == 'provider') {
-                return "<div class='btn-group'>" . $editBtn . "</div>";
+                return "<div class='btn-group'></div>";
             } else {
-                return "<div class='btn-group'>" . $editBtn . $deleteBtn . "</div>";
+                return "<div class='btn-group'>"  . $deleteBtn . "</div>";
             }           
          })
 
-            ->addColumn('image', function ($query) {
-                return $img = "<img width='100px' height='100px' src='" . asset($query->image) . "'></img>";
-            })
-            // ->addColumn('action', 'customers.action')
-
-            // ->addColumn('customer', function ($query) {
-            //     if ($query->user) {
-            //         return $query->user->name;
-            //     } else {
-            //         return 'N/A'; // Or any other placeholder value you want to use
-            //     }
-            // })
-
-            
 
             ->addColumn('restaurant', function ($reservation) {
                 return $reservation->restaurant_name;
             })
+           
+            ->addColumn('table', function ($reservation) {
+                return $reservation->table_name;
+            })
 
-
-            ->rawColumns(['action', 'image'])
+            ->addColumn('status', function ($query) {
+                return $query->reservation_status;
+            })
+            ->rawColumns(['action', 'status'])
             ->setRowId('id');
     }
     
@@ -66,25 +58,33 @@ class ReservationsDataTable extends DataTable
      * @param \App\Models\Reservation $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
+    // public function query(Reservation $model): QueryBuilder
+    // {
+    //     return $model->newQuery();
+    // }
+
+
     public function query(Reservation $model)
     {
         $user = auth()->user(); // Get the currently logged-in user
 
         if ($user->role == 'provider') {
-            
             // If the user is a provider, fetch reservations where the restaurant has the same provider
-            return $model->join('restaurants', 'reservations.restaurant_id', '=', 'restaurants.id')
-            ->where('restaurants.user_id', $user->id)
-                ->select('reservations.*')
+            return $model
+                ->join('restaurants', 'reservations.restaurant_id', '=', 'restaurants.id')
+                ->join('tables', 'reservations.table_id', '=', 'tables.id') // Join the tables table
+                ->where('restaurants.user_id', $user->id)
+                ->select('reservations.*', 'restaurants.name as restaurant_name', 'tables.name as table_name') // Select both restaurant and table names
                 ->newQuery();
         }
 
         // For other roles or scenarios, return a default query
-        // return $model->newQuery();
-        
-        return $model->select(['reservations.*', 'restaurants.name as restaurant_name'])
-        ->leftJoin('restaurants', 'reservations.restaurant_id', '=', 'restaurants.id');
+        return $model->select(['reservations.*', 'restaurants.name as restaurant_name', 'tables.name as table_name'])
+        ->leftJoin('restaurants', 'reservations.restaurant_id', '=', 'restaurants.id')
+        ->leftJoin('tables', 'reservations.table_id', '=', 'tables.id'); // Join the tables table and select the table name
     }
+
+   
 
     /**
      * Optional method if you want to use html builder.
@@ -117,18 +117,39 @@ class ReservationsDataTable extends DataTable
      */
     public function getColumns(): array
     {
-        return [
-            // Column::make('restaurant_name')->width(150),
-            Column::make('name'),
-            Column::make('restaurant'),
-            Column::make('reservation_date')->width(300),
-            Column::make('reservation_time'),
-            Column::computed('action')
-                ->exportable(false)
-                ->printable(false)
-                ->width(60)
-                ->addClass('text-center'),
-        ];
+        $user = auth()->user();
+        if ($user->role == 'provider') {
+            return [
+                // Column::make('restaurant_name')->width(150),
+
+                Column::make('restaurant'),
+                Column::make('table'),
+                Column::make('reservation_date'),
+                Column::make('reservation_time'),
+                Column::make('name'),
+                Column::make('email'),
+                Column::make('phone'),
+                Column::make('status'),
+            ];
+        } else {
+            return [
+                // Column::make('restaurant_name')->width(150),
+
+                Column::make('restaurant'),
+                Column::make('table'),
+                Column::make('reservation_date'),
+                Column::make('reservation_time'),
+                Column::make('name'),
+                Column::make('email'),
+                Column::make('phone'),
+                Column::make('status'),
+                Column::computed('action')
+                    ->exportable(false)
+                    ->printable(false)
+                    ->width(60)
+                    ->addClass('text-center'),
+            ];        }        
+        
     }
 
     /**

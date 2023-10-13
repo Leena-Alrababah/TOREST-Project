@@ -14,7 +14,8 @@
 
    <!-- Basic Bootstrap Table -->
               <div class="card">
-
+<div class="card-datatable table-responsive">
+                    <h4 class="card-header">Manage Reservations</h4>
                 <div class="table-responsive text-nowrap">
                     <div class="card-body">
                     {{ $dataTable->table() }}

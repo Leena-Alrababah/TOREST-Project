@@ -18,7 +18,7 @@ class Table extends Model
 
     public function reservation()
     {
-        return $this->hasOne(Reservation::class, 'table_id');
+        return $this->hasMany(Reservation::class, 'table_id');
     }
 
 }

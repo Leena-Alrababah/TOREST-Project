@@ -28,7 +28,7 @@ return new class extends Migration
             // Define foreign key relationships
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('restaurant_id')->references('id')->on('restaurants');
-            // $table->foreign('table_id')->references('id')->on('tables');
+            $table->foreign('table_id')->references('id')->on('tables');
 
         });
     }

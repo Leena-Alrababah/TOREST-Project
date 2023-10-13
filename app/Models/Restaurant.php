@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Reservation;
+
 
 class Restaurant extends Model
 {
@@ -20,7 +22,7 @@ class Restaurant extends Model
 
     public function reservations()
     {
-        return $this->hasMany(Reservation::class);
+        return $this->hasMany(Reservation::class, 'restaurant_id');
     }
 
     public function menus()
