@@ -42,6 +42,7 @@ class RestaurantController extends Controller
             'image4' => ['image', 'max:2048'], // Image 4
             'opening_hours_from' => ['required', 'date_format:H:i'],
             'opening_hours_to' => ['required', 'date_format:H:i'],
+            'address' => ['required', 'max:255'],
             'location' => ['required', 'max:255'],
             'description' => ['required'],
             'discount_percentage' => ['required', 'numeric', 'between:0,100'],
@@ -63,6 +64,7 @@ class RestaurantController extends Controller
                 $filenames[] = 'backend/assets/img/defults/defult-menu.png'; // Provide a default image path if no image is uploaded
             }
         }
+        
 
         $restaurant = new Restaurant();
 
@@ -74,6 +76,7 @@ class RestaurantController extends Controller
         $restaurant->opening_hours_from = $request->opening_hours_from;
         $restaurant->opening_hours_to = $request->opening_hours_to;
         // $restaurant->opening_hours = $request->input('opening_hours', '12:12');
+        $restaurant->address = $request->address;
         $restaurant->location = $request->location;
         $restaurant->description = $request->description;
         $restaurant->discount_percentage = $request->discount_percentage;
@@ -119,6 +122,7 @@ class RestaurantController extends Controller
             'image4' => 'image|max:2048', // Image 4
             'opening_hours_from' => 'required',
             'opening_hours_to' => 'required',
+            'address' => 'required|max:255',
             'location' => 'required|max:255',
             'description' => 'required',
             'discount_percentage' => 'required|numeric|between:0,100',
@@ -155,6 +159,7 @@ class RestaurantController extends Controller
         $restaurant->opening_hours_from = $request->opening_hours_from;
         $restaurant->opening_hours_to = $request->opening_hours_to;
         // $restaurant->opening_hours = $request->input('opening_hours', '12:12');
+        $restaurant->address = $request->address;
         $restaurant->location = $request->location;
         $restaurant->description = $request->description;
         $restaurant->discount_percentage = $request->discount_percentage;

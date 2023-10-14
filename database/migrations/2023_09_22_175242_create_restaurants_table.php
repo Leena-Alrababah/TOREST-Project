@@ -19,8 +19,9 @@ return new class extends Migration
             $table->string('image2')->nullable(); // Image 2 (nullable)
             $table->string('image3')->nullable(); // Image 3 (nullable)
             $table->string('image4')->nullable(); // Image 4 (nullable)
-            $table->time('opening_hours_from'); // Opening hours
-            $table->time('opening_hours_to'); // Opening hours
+            $table->string('opening_hours_from'); // Opening hours
+            $table->string('opening_hours_to'); // Opening hours
+            $table->string('address'); // Restaurant location
             $table->string('location'); // Restaurant location
             $table->text('description'); // Restaurant description
             $table->float('discount_percentage')->nullable(); // Discount percentage (nullable)

@@ -5,38 +5,35 @@
                     <div class="col-lg-6">
                         <div class="row g-3">
                             <div class="col-6 text-start">
-                                <img class="img-fluid rounded w-100 wow zoomIn" data-wow-delay="0.1s" src="./img2/steel-bg1.jpg">
+                                <img src="{{asset ($restaurant->image1) }}" class="img-fluid rounded w-100 wow zoomIn" data-wow-delay="0.1s" >
                             </div>
                             <div class="col-6 text-start">
-                                <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.3s" src="./img2/steel-bg2.jpg" style="margin-top: 25%;">
+                                <img src="{{asset ($restaurant->image2) }}" class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.3s"  style="margin-top: 25%;">
                             </div>
                             <div class="col-6 text-end">
-                                <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.5s" src="./img2/steel-bg3.jpg">
+                                <img src="{{asset ($restaurant->image3) }}" class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.5s" >
                             </div>
                             <div class="col-6 text-end">
-                                <img class="img-fluid rounded w-100 wow zoomIn" data-wow-delay="0.7s" src="./img2/steel-bg4.jpg">
+                                <img src="{{asset ($restaurant->image4) }}" class="img-fluid rounded w-100 wow zoomIn" data-wow-delay="0.7s" >
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        <h2 class="mb-2">STEEL Restaurant & Cafe</span></h2>
+                        <h2 class="mb-2">{{$restaurant->name}}</span></h2>
                         <div class="mb-4 fs-3">
-                    <small class="fa fa-star text-primary"></small>
-                    <small class="fa fa-star text-primary"></small>
-                    <small class="fa fa-star text-primary"></small>
-                    <small class="fa fa-star text-primary"></small>
-                    <small class="fa fa-star text-primary"></small>  <span>10 Reviews</span>
+                     {!! $restaurant->ratingStars !!} 
+                     <span> {{ $restaurant->reviews_count }} Reviews</span>
                   </div>
                         
                          <div class="mb-2" style="font-size: larger;">
                     <span class="fa fa-clock text-dark"style="margin-right: 10px;"></span>
-                    <span class="text-dark">  9 AM - 3 AM</span>
+                    <span class="text-dark">{{$restaurant->opening_hours_from}} AM - {{$restaurant->opening_hours_to}} PM</span>
                   </div>
                   <div class="mb-4" style="font-size: larger;">
                     <span class="fa fa-location-arrow text-dark "style="margin-right: 10px;"></span>
-                    <a href="https://goo.gl/maps/qW1ozVuewurwsonq9" class="text-primary">  Wasfi Al-Tal Street Steel Restaurant & Cafe, Irbid, Jordan</a>
+                    <a href="{{$restaurant->location}}" class="text-primary">{{$restaurant->address}}</a>
                   </div>
-                  <p class="mb-4">Welcome to home of The Jordan legend, Steel ! The iconic destination that defines North for...</p>
+                  <p class="mb-4">{{$restaurant->description}}</p>
                   <br>
                     
                         <div class="row g-4 mb-4">

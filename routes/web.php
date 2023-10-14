@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Frontend\RestaurantController as FrontendRestaurantController;
+use App\Http\Controllers\Frontend\ReservationController as FrontendReservationController;
 
 
 
@@ -27,8 +28,21 @@ Route::get('/dashboardd', function () {
 
 // me
 // Route::get('/home', [HomeController::class, 'index']);
-Route::get( '/all_restaurants', [FrontendRestaurantController::class, 'index'])->name('restaurants.index');
-// Route::get('/restaurants/{restaurant}', [FrontendRestaurantController::class, 'show'])->name('restaurants.show');
+Route::get('/all_restaurants', [FrontendRestaurantController::class, 'index'])->name('restaurants.index');
+Route::get('/restaurant/{restaurant}', [FrontendRestaurantController::class, 'show'])->name('restaurants.show');
+Route::post('/reserve_one', [FrontendReservationController::class, 'stepOne'])->name('reserve.stepOne');
+
+Route::get('/services', function () {
+    return view('frontend.services.services');
+})->name('services');
+
+Route::get('/about', function () {
+    return view('frontend.aboutUs.about');
+})->name('about');
+
+Route::get('/contact', function () {
+    return view('frontend.contactUs.contact');
+})->name('contact');
 
 
 Route::middleware('auth')->group(function () {
@@ -39,4 +53,4 @@ Route::middleware('auth')->group(function () {
 
 
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

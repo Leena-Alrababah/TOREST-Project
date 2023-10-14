@@ -92,7 +92,7 @@ class RestaurantsDataTable extends DataTable
             Column::make('image')->width(150),
             Column::make('name'),
             Column::make('Provider'),
-            Column::make('location')->width(300),
+            Column::make('address')->width(300),
             Column::make('discount_percentage'),
             Column::computed('action')
                 ->exportable(false)

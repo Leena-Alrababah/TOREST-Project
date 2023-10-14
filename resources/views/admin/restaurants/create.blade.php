@@ -120,6 +120,18 @@
 
 
 
+                <!-- Restaurant Address -->
+                <div class="form-floating form-floating-outline mb-4">
+                    <input type="text" class="form-control" id="restaurant-location"
+                        placeholder="Enter restaurant location" name="address" aria-label="restaurant location">
+                    <label for="restaurant-location">Restaurant Address</label>
+                    <span class="text-danger small">
+                            @error('address')
+                                {{ $message }}
+                            @enderror
+                        </span>
+                </div>
+
                 <!-- Restaurant Location -->
                 <div class="form-floating form-floating-outline mb-4">
                     <input type="text" class="form-control" id="restaurant-location"

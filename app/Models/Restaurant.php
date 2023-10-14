@@ -25,7 +25,7 @@ class Restaurant extends Model
         return $this->hasMany(Reservation::class, 'restaurant_id');
     }
 
-    public function menus()
+    public function menu()
     {
         return $this->hasMany(Menu::class, 'restaurant_id');
     }
@@ -42,7 +42,17 @@ class Restaurant extends Model
 
 
 
+    //////////////////////////////////////////  Count Reviews  //////////////////////////////////////////
 
+    public function reviewsCount()
+    {
+        return $this->reviews()->count();
+    }
+
+    public function getReviewsCountAttribute()
+    {
+        return $this->reviewsCount();
+    }
 
 
     //////////////////////////////////////////  Rating  //////////////////////////////////////////
