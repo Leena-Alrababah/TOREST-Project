@@ -24,7 +24,7 @@
                 </div>
                
                 <div class="col-lg-4 col-md-6">
-                    <h4 class="text-white mb-3"><img src="./img2/logo2.png" alt="" style="height: 60px;"></h4>
+                    <h4 class="text-white mb-3"><img src="{{asset('frontend/img2/logo2.png')}}" alt="" style="height: 60px;"></h4>
                     <p> Best destination to choose today's restaurant</p>
                     
                 </div>

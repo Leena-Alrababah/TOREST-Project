@@ -92,7 +92,7 @@
                         <div class="form-floating form-floating-outline mb-4">
                             <input type="time" class="form-control" id="opening-hours-from"
                                 placeholder="Enter opening hours (From)" name="opening_hours_from"
-                                aria-label="opening hours (From)">
+                                aria-label="opening hours (From)" step="60">
                             <label for="opening-hours-from">Opening Hours (From)</label>
                             <span class="text-danger small">
                             @error('opening_hours_from')
@@ -107,7 +107,7 @@
                         <div class="form-floating form-floating-outline mb-4">
                             <input type="time" class="form-control" id="opening-hours-to"
                                 placeholder="Enter opening hours (To)" name="opening_hours_to"
-                                aria-label="opening hours (To)">
+                                aria-label="opening hours (To)" step="60">
                             <label for="opening-hours-to">Opening Hours (To)</label>
                             <span class="text-danger small">
                             @error('opening_hours_to')

@@ -14,28 +14,5 @@
 
 
 @include('frontend.home.sections.process')
-
-
- 
-
-
-  
-
-     
-
-
-   
-
-
-    
-
-
-   
-
-
-   
-
-
-   
-        
+      
 @endsection

@@ -39,4 +39,58 @@ class Restaurant extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+
+
+
+
+
+    //////////////////////////////////////////  Rating  //////////////////////////////////////////
+    //  Rating for each restaurant:
+
+    public function averageRating()
+    {
+        return $this->reviews->avg('rating');
+    }
+
+    // Fetch as stars
+    public function getRatingStarsAttribute()
+    {
+        $rating = $this->averageRating();
+        $stars = '';
+
+        for ($i = 1; $i <= 5; $i++) {
+            if ($i <= $rating) {
+                $stars .= '<i class="fas fa-star text-primary"></i>';
+            } else {
+                $stars .= '<i class="far fa-star text-primary"></i>';
+            }
+        }
+
+        return $stars;
+    }
+
+
+    //////////////////////////////////////////  Opening Hours  //////////////////////////////////////////
+
+    // retrieve the opening and closing hours
+    public function getOpeningHourAttribute()
+    {
+        return $this->opening_hours_from;
+    }
+
+    public function getClosingHourAttribute()
+    {
+        return $this->opening_hours_to;
+    }
+
+    // to Check Open Status
+    public function isOpenNow()
+    {
+        $now = now(); // Current time
+        $openingHour = $this->opening_hour; // Retrieve from the model
+        $closingHour = $this->closing_hour; // Retrieve from the model
+
+        return $now >= $openingHour && $now <= $closingHour;
+    }
 }

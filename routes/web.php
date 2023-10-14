@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Frontend\RestaurantController as FrontendRestaurantController;
 
 
 
@@ -26,7 +26,10 @@ Route::get('/dashboardd', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 // me
-Route::get('/home', [HomeController::class, 'index']);
+// Route::get('/home', [HomeController::class, 'index']);
+Route::get( '/all_restaurants', [FrontendRestaurantController::class, 'index'])->name('restaurants.index');
+// Route::get('/restaurants/{restaurant}', [FrontendRestaurantController::class, 'show'])->name('restaurants.show');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
