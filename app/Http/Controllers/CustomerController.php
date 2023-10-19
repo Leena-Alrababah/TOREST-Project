@@ -7,7 +7,6 @@ use App\DataTables\CustomersDataTable;
 // use App\Http\Requests\UserStoreRequest;
 // use Illuminate\Support\Facades\Storage;
 use App\Models\User;
-// use Illuminate\Support\Facades\Validator;
 
 
 

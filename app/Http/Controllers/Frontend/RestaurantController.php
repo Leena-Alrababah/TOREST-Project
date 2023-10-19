@@ -20,7 +20,7 @@ class RestaurantController extends Controller
     public function show($restaurantId)
     {
         // Fetch the specific restaurant from the database, including its menu and tables
-        $restaurant = Restaurant::with(['menu', 'tables', 'reviews'])->find($restaurantId);
+        $restaurant = Restaurant::with(['menu', 'reviews'])->find($restaurantId);
 
         if (!$restaurant) {
             // Handle the case where the restaurant is not found

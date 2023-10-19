@@ -19,7 +19,7 @@ use App\Http\Controllers\Frontend\ReservationController as FrontendReservationCo
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('frontend.home.home');
 });
 
 Route::get('/dashboardd', function () {
@@ -31,6 +31,10 @@ Route::get('/dashboardd', function () {
 Route::get('/all_restaurants', [FrontendRestaurantController::class, 'index'])->name('restaurants.index');
 Route::get('/restaurant/{restaurant}', [FrontendRestaurantController::class, 'show'])->name('restaurants.show');
 Route::post('/reserve_one', [FrontendReservationController::class, 'stepOne'])->name('reserve.stepOne');
+Route::get('/complete_reservation/{restaurant}', [FrontendReservationController::class, 'showCompleteReservation'])->name('complete.reservation');
+
+Route::post('/reserve_two', [FrontendReservationController::class, 'stepTwo'])->name('reserve.stepTwo');
+// Route::get('/reserve_one', [FrontendReservationController::class, 'stepOne'])->name('reserve.stepOne');
 
 Route::get('/services', function () {
     return view('frontend.services.services');
