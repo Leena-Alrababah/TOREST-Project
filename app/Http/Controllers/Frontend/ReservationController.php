@@ -64,7 +64,7 @@ class ReservationController extends Controller
             session()->put('reservationData', $restaurantData);
 
             // return view('frontend.completeProcess.complete', compact('restaurant', 'date', 'time', 'guests', 'filteredTables'));
-            return redirect()->route('complete.reservation', $restaurant->id);
+            return redirect()->route('userSide.complete.reservation', $restaurant->id);
         } else {
             Alert::error('Error', 'Sorry, no tables are available for ' . $guests . ' guests.');
 

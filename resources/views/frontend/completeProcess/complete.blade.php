@@ -60,7 +60,7 @@
 
             <div class="row justify-content-center">
                 <div class="col-lg-6 col-md-6">
-                    <form action="{{route('reserve.stepTwo')}}" method="post" role="form" class="php-email-form"
+                    <form action="{{route('userSide.reserve.stepTwo')}}" method="post" role="form" class="php-email-form"
                         data-aos="fade-up" data-aos-delay="100">
                         @csrf
                         <input type="hidden" name="restaurant_id" value="{{ $restaurant->id }}">

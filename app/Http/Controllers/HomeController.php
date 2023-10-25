@@ -15,7 +15,7 @@ class HomeController extends Controller
             $role = Auth()->user()->role;
 
             if($role == 'customer'){
-                return view('dashboard');
+                return view('frontend.home.home');
             } 
             
             elseif($role == 'admin'){

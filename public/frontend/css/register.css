@@ -112,6 +112,7 @@ form .field input[type="submit"]{
   background:  #D32107;
   transition: all 0.3s ease;
 }
+
 form .field input[type="submit"]:active{
   transform: scale(0.95);
 }
@@ -129,6 +130,10 @@ form .pass-link a:hover,
 form .signup-link a:hover{
   text-decoration: underline;
 }
+
+/* .btn-outline-secondary{
+color: #D32107;
+} */
 
 
 
