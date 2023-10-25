@@ -53,8 +53,11 @@
                     </div>
                     <div class="wrapper">
                         <div class="title">
-                            Reset Password
+                            Forgot Password
                         </div>
+                        <!-- Session Status -->
+                        <x-auth-session-status class="mb-4" :status="session('status')" />
+
                         <form method="POST" action="{{ route('password.email') }}">
                             @csrf
                             <div class="field">
@@ -73,7 +76,7 @@
                     </div>
                 </div>
             </center>
-            
+
         </div>
     </div>
 
