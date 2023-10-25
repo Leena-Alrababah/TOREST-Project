@@ -60,7 +60,7 @@
 
 <body>
     <div class="container ">
-        <div class="row align-items-center">
+        <div class="row justify-content-center">
 
             <center>
                 <div class="col-lg-6" style="margin-top: 100px; ">
@@ -81,12 +81,12 @@
                                 <x-input-error :messages="$errors->get('email')" class="mt-2" />
                             </div>
                             <div class="field">
-                                <input type="password" name="password" value="<?php echo old('email'); ?>" required>
+                                <input type="password" name="password"  required>
                                 <label>New Password</label>
                                 <x-input-error :messages="$errors->get('password')" class="mt-2" />
                             </div>
                             <div class="field">
-                                <input type="password" name="password_confirmation" value="<?php echo old('email'); ?>"
+                                <input type="password" name="password_confirmation"
                                     required>
                                 <label>Confirm New Password</label>
                                 <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />

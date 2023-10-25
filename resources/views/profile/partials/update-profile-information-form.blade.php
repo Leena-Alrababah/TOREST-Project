@@ -1,4 +1,4 @@
-<section>
+{{-- <section>
     <header>
         <h2 class="text-lg font-medium text-gray-900">
             {{ __('Profile Information') }}
@@ -19,21 +19,24 @@
 
         <div>
             <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)" required autofocus autocomplete="name" />
+            <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)"
+                required autofocus autocomplete="name" />
             <x-input-error class="mt-2" :messages="$errors->get('name')" />
         </div>
 
         <div>
             <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" name="email" type="email" class="mt-1 block w-full" :value="old('email', $user->email)" required autocomplete="username" />
+            <x-text-input id="email" name="email" type="email" class="mt-1 block w-full" :value="old('email', $user->email)"
+                required autocomplete="username" />
             <x-input-error class="mt-2" :messages="$errors->get('email')" />
 
-            @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && ! $user->hasVerifiedEmail())
+            @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && !$user->hasVerifiedEmail())
                 <div>
                     <p class="text-sm mt-2 text-gray-800">
                         {{ __('Your email address is unverified.') }}
 
-                        <button form="send-verification" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                        <button form="send-verification"
+                            class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                             {{ __('Click here to re-send the verification email.') }}
                         </button>
                     </p>
@@ -51,14 +54,84 @@
             <x-primary-button>{{ __('Save') }}</x-primary-button>
 
             @if (session('status') === 'profile-updated')
-                <p
-                    x-data="{ show: true }"
-                    x-show="show"
-                    x-transition
-                    x-init="setTimeout(() => show = false, 2000)"
-                    class="text-sm text-gray-600"
-                >{{ __('Saved.') }}</p>
+                <p x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 2000)"
+                    class="text-sm text-gray-600">{{ __('Saved.') }}</p>
             @endif
         </div>
     </form>
-</section>
+</section> --}}
+
+<div class="card mb-4">
+    <h4 class="card-header">Profile Details</h4>
+    <!-- Account -->
+    <form method="post" action="{{ route('profile.update') }}" id="formAccountSettings">
+        @csrf
+        @method('patch')
+        <div class="card-body">
+            <div class="d-flex align-items-start align-items-sm-center gap-4">
+                <img src="{{ Auth::user()->image }}" alt="user-avatar" class="d-block w-px-120 h-px-120 rounded"
+                    id="uploadedAvatar" style="height: 120px; width: 120px; border-radius: 80px;" />
+                <div class="button-wrapper">
+                    <label for="upload" class="btn btn-dark me-2 mb-3" tabindex="0">
+                        <span class="d-none d-sm-block">Upload new photo</span>
+                        <i class="mdi mdi-tray-arrow-up d-block d-sm-none"></i>
+                        <input type="file" id="upload" class="account-file-input" hidden
+                            accept="image/png, image/jpeg"/>
+                    </label>
+                    <div class="text-muted small">Allowed JPG, GIF or PNG. Max size of 800K</div>
+                </div>
+            </div>
+        </div>
+        <div class="card-body pt-2 mt-1">
+            {{-- <form id="formAccountSettings" method="POST" onsubmit="return false"> --}}
+            <div class="row mt-2 gy-4">
+                <div class="col-md-6">
+                    <div class="form-floating form-floating-outline">
+                        <input class="form-control" type="text" id="firstName" name="name"
+                            value="{{ Auth::user()->name }}" autofocus />
+                        <label for="firstName">Name</label>
+                        @if ($errors->has('name'))
+                            <div class="mt-2 text-danger">
+                                {{ $errors->first('name') }}
+                            </div>
+                        @endif
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="input-group input-group-merge">
+                        <div class="form-floating form-floating-outline">
+                            <input type="tel" id="phoneNumber" name="phone" class="form-control"
+                                value="{{ Auth::user()->phone }}" placeholder="202 555 0111" />
+                            <label for="phoneNumber">Phone Number</label>
+                        </div>
+                        <span class="input-group-text">JOD (+962)</span>
+                        @if ($errors->has('phone'))
+                            <div class="mt-2 text-danger">
+                                {{ $errors->first('phone') }}
+                            </div>
+                        @endif
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-floating form-floating-outline">
+                        <input class="form-control" type="email" id="email" name="email"
+                            value="{{ Auth::user()->email }}" placeholder="john.doe@example.com" />
+                        <label for="email">E-mail</label>
+                        @if ($errors->has('email'))
+                            <div class="mt-2 text-danger">
+                                {{ $errors->first('email') }}
+                            </div>
+                        @endif
+                    </div>
+                </div>
+            </div>
+            <div class="mt-4">
+                <button type="submit" class="btn btn-success me-2">Save changes</button>
+                {{-- <button type="submit" class="btn btn-outline-success">Save changes</button> --}}
+
+                {{-- <button type="reset" class="btn btn-outline-danger">Reset</button> --}}
+            </div>
+    </form>
+</div>
+<!-- /Account -->
+</div>
