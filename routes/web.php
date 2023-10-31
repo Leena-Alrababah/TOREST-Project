@@ -1,11 +1,11 @@
 <?php
 
+use App\Http\Controllers\FacebookController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Frontend\RestaurantController as FrontendRestaurantController;
 use App\Http\Controllers\Frontend\ReservationController as FrontendReservationController;
-
-
+use App\Http\Controllers\GoogleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,6 +59,15 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+
+
+// /------------ Login With google & Facebook ------------/
+
+Route::get('auth/google', [GoogleController ::class, 'redirect'])->name('google-auth');
+Route::get('auth/google/call-back', [GoogleController::class, 'callbackGoogle']);
+
+Route::get('auth/facebook', [FacebookController::class, 'facebookPage'])->name('facebook-auth');
+Route::get('auth/facebook/callback', [FacebookController::class, 'facebookredirect']);
 
 
 require __DIR__ . '/auth.php';

@@ -10,11 +10,11 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto py-0">
-                <a href="/" class="nav-item nav-link active">Home</a>
-                <a href="{{ route('restaurants.index') }}" class="nav-item nav-link">Restaurants</a>
-                <a href="{{ route('services') }}" class="nav-item nav-link">Services</a>
-                <a href="{{ route('about') }}" class="nav-item nav-link">About</a>
-                <a href="{{ route('contact') }}" class="nav-item nav-link">Contact</a>
+                <a href="/" class="nav-item nav-link @if (request()->is('/')) active @endif">Home</a>
+                <a href="{{ route('restaurants.index') }}" class="nav-item nav-link @if (request()->is('restaurants.index')) active @endif">Restaurants</a>
+                <a href="{{ route('services') }}" class="nav-item nav-link @if (request()->is('services')) active @endif">Services</a>
+                <a href="{{ route('about') }}" class="nav-item nav-link @if (request()->is('about')) active @endif">About</a>
+                <a href="{{ route('contact') }}" class="nav-item nav-link @if (request()->is('contact')) active @endif">Contact</a>
             </div>
             @auth
                 <div class="dropdown">

@@ -115,7 +115,7 @@
                           <div class="field">
                             <hr style="border-top: 3px solid balack;">
                                 <p>Or Login With</p>
-                                <a href="">
+                                <a href="{{route('google-auth')}}">
                                     <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="35"
                                         height="35" viewBox="0 0 48 48">
                                         <path fill="#fbc02d"
@@ -133,7 +133,7 @@
                                     </svg>
                                     </i>
                                 </a>
-                                <a href="">
+                                <a href="{{route('facebook-auth')}}">
                                     <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="35"
                                         height="35" viewBox="0 0 48 48">
                                         <linearGradient id="Ld6sqrtcxMyckEl6xeDdMa_uLWV5A9vXIPu_gr1" x1="9.993"

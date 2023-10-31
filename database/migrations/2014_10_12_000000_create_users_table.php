@@ -17,10 +17,12 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('phone')->nullable();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->string('password')->nullable();
             $table->string('image')->default('http://127.0.0.1:8000/backend/assets/img/avatars/11.png');
-            $table->string('role')->default('customer'); 
+            $table->string('role')->default('customer');
 
+            $table->string('google_id')->nullable();
+            $table->string('facebook_id')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
