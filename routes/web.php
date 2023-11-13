@@ -18,6 +18,10 @@ use App\Http\Controllers\GoogleController;
 |
 */
 
+Route::fallback(function () {
+    return view('404');
+});
+
 Route::get('/', function () {
     return view('frontend.home.home');
 });
@@ -27,16 +31,15 @@ Route::get('/dashboardd', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 // me
-// Route::get('/home', [HomeController::class, 'index']);
 Route::get('/all_restaurants', [FrontendRestaurantController::class, 'index'])->name('restaurants.index');
 Route::get('/restaurant/{restaurant}', [FrontendRestaurantController::class, 'show'])->name('restaurants.show');
 Route::post('/reserve_one', [FrontendReservationController::class, 'stepOne'])->name('reserve.stepOne');
 
 Route::middleware(['auth', 'verified'])->name('userSide.')->group( function () {
-
         Route::get('/complete_reservation/{restaurant}', [FrontendReservationController::class, 'showCompleteReservation'])->name('complete.reservation');
         Route::post('/reserve_two', [FrontendReservationController::class, 'stepTwo'])->name('reserve.stepTwo');
         // Route::get('/reserve_one', [FrontendReservationController::class, 'stepOne'])->name('reserve.stepOne');
+        Route::post('/addReview/{user_id}/{restaurant_id}', [FrontendRestaurantController::class, 'AddReview'])->name('AddReview');
     }
 );
 
@@ -69,5 +72,6 @@ Route::get('auth/google/call-back', [GoogleController::class, 'callbackGoogle'])
 Route::get('auth/facebook', [FacebookController::class, 'facebookPage'])->name('facebook-auth');
 Route::get('auth/facebook/callback', [FacebookController::class, 'facebookredirect']);
 
-
+Route::get('paypal/success', [FrontendReservationController::class, 'success'])->name('paypal_success');
+Route::get('paypal/cancel',  [FrontendReservationController::class, 'cancel'])->name('paypal_cancel');
 require __DIR__ . '/auth.php';

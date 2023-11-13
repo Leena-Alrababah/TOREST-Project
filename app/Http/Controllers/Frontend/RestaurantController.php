@@ -5,7 +5,8 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Restaurant;
-
+use App\Models\Review;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class RestaurantController extends Controller
 {
@@ -31,4 +32,20 @@ class RestaurantController extends Controller
         return view('frontend.singleRestaurant.single', compact('restaurant'));
     }
 
+    public function AddReview(Request $request, $userId, $restaurantId)
+    {
+        // dd($userId);
+        $review = new Review();
+
+        $review->user_id = $userId;
+        $review->restaurant_id = $restaurantId;
+        $review->review_text = $request->review;
+        $review->rating = $request->rating;
+
+        $review->save();
+
+        Alert::success('Success', 'Your review has been added successfully!');
+
+        return redirect()->back();
+    }
 }

@@ -6,11 +6,10 @@
                             <h2 class="mb-4">Write a Review</h2>
 
             </div>
-            <form>
-                <div class="mb-3">
-                    <label for="name" class="form-label">Your Name</label>
-                    <input type="text" class="form-control" id="name" name="name" required>
-                </div>
+            @auth
+            <form method="POST" action="{{ route('userSide.AddReview', ['user_id' => Auth::user()->id, 'restaurant_id' => $restaurant->id])}}">
+            @csrf
+                
                 <div class="mb-3">
                     <label for="rating" class="form-label">Rating</label>
                     <select class="form-select" id="rating" name="rating" required>
@@ -30,6 +29,10 @@
                 <button type="submit" class="btn btn-primary">Submit Review</button>
                 </div>
             </form>
+            @else
+            <div>Please login first</div>
+            <a href="{{route('login')}}">login</a>
+              @endauth
         </div>
     </div>
 </div>
