@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Reservation;
 
 
 class Restaurant extends Model
@@ -12,7 +11,7 @@ class Restaurant extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'address', 'phone', 'cuisine_type', 'opening_hours', 'location', 'description', 'discount_percentage',
+        'name', 'image1', 'image2', 'image3', 'image4', 'opening_hours_from', 'opening_hours_to', 'address', 'location', 'description', 'discount_percentage', 'dishes_type'
     ];
 
     public function reviews()

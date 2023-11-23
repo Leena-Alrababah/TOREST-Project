@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Frontend\RestaurantController as FrontendRestaurantController;
 use App\Http\Controllers\Frontend\ReservationController as FrontendReservationController;
 use App\Http\Controllers\GoogleController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,23 +23,26 @@ Route::fallback(function () {
     return view('404');
 });
 
-Route::get('/', function () {
-    return view('frontend.home.home');
-});
+// Route::get('/', function () {
+//     return view('frontend.home.home');
+// });
+Route::get('/', [HomeController::class, 'homePage'])->name('home');
 
-Route::get('/dashboardd', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+
+
+// Route::get('/dashboardd', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
 // me
 Route::get('/all_restaurants', [FrontendRestaurantController::class, 'index'])->name('restaurants.index');
 Route::get('/restaurant/{restaurant}', [FrontendRestaurantController::class, 'show'])->name('restaurants.show');
 Route::post('/reserve_one', [FrontendReservationController::class, 'stepOne'])->name('reserve.stepOne');
 
-Route::middleware(['auth', 'verified'])->name('userSide.')->group( function () {
+Route::middleware(['auth', 'verified'])->name('userSide.')->group(
+    function () {
         Route::get('/complete_reservation/{restaurant}', [FrontendReservationController::class, 'showCompleteReservation'])->name('complete.reservation');
         Route::post('/reserve_two', [FrontendReservationController::class, 'stepTwo'])->name('reserve.stepTwo');
-        // Route::get('/reserve_one', [FrontendReservationController::class, 'stepOne'])->name('reserve.stepOne');
         Route::post('/addReview/{user_id}/{restaurant_id}', [FrontendRestaurantController::class, 'AddReview'])->name('AddReview');
     }
 );
@@ -66,7 +70,7 @@ Route::middleware('auth')->group(function () {
 
 // /------------ Login With google & Facebook ------------/
 
-Route::get('auth/google', [GoogleController ::class, 'redirect'])->name('google-auth');
+Route::get('auth/google', [GoogleController::class, 'redirect'])->name('google-auth');
 Route::get('auth/google/call-back', [GoogleController::class, 'callbackGoogle']);
 
 Route::get('auth/facebook', [FacebookController::class, 'facebookPage'])->name('facebook-auth');

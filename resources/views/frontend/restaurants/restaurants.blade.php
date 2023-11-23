@@ -83,7 +83,7 @@
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                         <div class="package-item">
                             <div class="overflow-hidden">
-                                <img class="img-fluid" src="{{ $restaurant->image1 }}" alt="" />
+                                <img class="img-fluid" src="{{ $restaurant->image1 }}" alt="{{ $restaurant->name }}" />
                             </div>
                             @if ($restaurant->isOpenNow())
                             <div class="border-bottom text-success p-2 text-center">
@@ -96,9 +96,9 @@
                             @endif
                             <div class="text-center p-4 card fixed-height-card">
                                 <h3 class="mb-0">{{ $restaurant->name }}</h3>
-                                <div class="mb-3">
+                                <div>
                                     {!! $restaurant->ratingStars !!}
-                                    <p>{{ $restaurant->reviews_count }} Reviews</p>
+                                    <p>{!! $restaurant->ReviewsCount !!} Reviews</p>
                                 </div>
                                 <p>Burger / Lunch / Dinner / Trendy / Healthy</p>
                                 <div class="d-flex justify-content-center mb-2">
@@ -108,34 +108,7 @@
                         </div>
                     </div>
                     @endforeach
-                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="package-item">
-                        <div class="overflow-hidden">
-                            <img class="img-fluid" src="./img2/cappado.jpg" alt="">
-                        </div>
-                        <div class="d-flex border-bottom text-danger">
-                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-clock text-primary me-2"></i>Close Now</small>
-                            
-                            
-                        </div>
-                        <div class="text-center p-4">
-                            <h3 class="mb-0">Cappado.irbid</h3>
-                            <div class="mb-3">
-                                <small class="fa fa-star text-primary"></small>
-                                <small class="fa fa-star text-primary"></small>
-                                <small class="fa fa-star text-primary"></small>
-                                <small class="fa fa-star text-primary"></small>
-                                <small class="fa fa-star text-primary"></small>
-                                 <p>10 Reviews</p>
-                            </div>
-                                 <p>Burger / Lunch / Dinner / Healthy / Trendy
-                                 </p>
-                            <div class="d-flex justify-content-center mb-2">
-                                <a href="#" class="btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 3px 30px;">Show</a>
-                                
-                            </div>
-                        </div>
-                    </div>
+                    
                 </div>
                 </div>
             </div>

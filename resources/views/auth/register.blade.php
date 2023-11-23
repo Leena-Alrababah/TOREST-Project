@@ -125,7 +125,7 @@
                         </div>
 
                         <div class="signup-link">
-                            Already registered? <a href="{{ route('login') }}">Signup now</a>
+                            Already registered? <a href="{{ route('login') }}">Login now</a>
                         </div>
                     </form>
                 </div>

@@ -4,7 +4,7 @@
             <div class="row g-5">
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s" style="min-height: 400px;">
                     <div class="position-relative h-100">
-                        <img class="img-fluid position-absolute w-100 h-100" src="./img2/restresrvbild3.webp" alt="" style="object-fit: cover;">
+                        <img class="img-fluid position-absolute w-100 h-100" src="{{ asset('frontend/img2/restresrvbild3.webp')}}" alt="" style="object-fit: cover;">
                     </div>
                 </div>
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
@@ -32,7 +32,7 @@
                             <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Ratings-Reservations</p>
                         </div>
                     </div>
-                    <a class="btn btn-primary py-3 px-5 mt-2" href="">Read More</a>
+                    <a class="btn btn-primary py-3 px-5 mt-2" href="{{route('about')}}">Read More</a>
                 </div>
             </div>
         </div>

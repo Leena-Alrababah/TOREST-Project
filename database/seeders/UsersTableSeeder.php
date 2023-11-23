@@ -41,6 +41,42 @@ class UsersTableSeeder extends Seeder
         ]);
 
         User::create([
+            'name' => 'Provider User 3',
+            'email' => 'provider3@example.com',
+            'phone' => '5555655555',
+            'password' => Hash::make('password'),
+            'image' => 'http://127.0.0.1:8000/backend/assets/img/avatars/11.png',
+            'role' => 'provider',
+        ]);
+
+        User::create([
+            'name' => 'Provider User 4',
+            'email' => 'provider4@example.com',
+            'phone' => '5555455555',
+            'password' => Hash::make('password'),
+            'image' => 'http://127.0.0.1:8000/backend/assets/img/avatars/11.png',
+            'role' => 'provider',
+        ]);
+
+        User::create([
+            'name' => 'Provider User 5',
+            'email' => 'provider5@example.com',
+            'phone' => '5355455555',
+            'password' => Hash::make('password'),
+            'image' => 'http://127.0.0.1:8000/backend/assets/img/avatars/11.png',
+            'role' => 'provider',
+        ]);
+
+        User::create([
+            'name' => 'Provider User 6',
+            'email' => 'provider6@example.com',
+            'phone' => '5655455555',
+            'password' => Hash::make('password'),
+            'image' => 'http://127.0.0.1:8000/backend/assets/img/avatars/11.png',
+            'role' => 'provider',
+        ]);
+
+        User::create([
             'name' => 'Customer 1',
             'email' => 'customer1@example.com',
             'phone' => '1231231234',
