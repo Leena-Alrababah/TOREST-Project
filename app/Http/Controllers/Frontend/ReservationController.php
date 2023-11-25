@@ -16,6 +16,10 @@ class ReservationController extends Controller
 {
     public function stepOne(Request $request)
     {
+        $time = $request->time;
+
+        dd($time);
+
 
         $request->validate([
             'date' => 'required|date|after_or_equal:today|before_or_equal:7 days', // Date within one week
@@ -29,7 +33,6 @@ class ReservationController extends Controller
                         $fail("Invalid restaurant selected.");
                         return;
                     }
-
                     $openingTime = Carbon::createFromFormat('H:i', $restaurant->opening_hours_from);
                     $closingTime = Carbon::createFromFormat('H:i', $restaurant->opening_hours_to);
                     $selectedTime = Carbon::createFromFormat('H:i', $value);
@@ -50,6 +53,7 @@ class ReservationController extends Controller
         $guests = $request->guests;
 
 
+
         // dd($filteredTables);
         $filteredTables = $restaurant->tables->filter(function ($table) use ($guests) {
             return $table->status == 'available' && $table->capacity >= $guests;
@@ -65,12 +69,10 @@ class ReservationController extends Controller
             ];
             session()->put('reservationData', $restaurantData);
 
-            // return view('frontend.completeProcess.complete', compact('restaurant', 'date', 'time', 'guests', 'filteredTables'));
             return redirect()->route('userSide.complete.reservation', $restaurant->id);
         } else {
             Alert::error('Error', 'Sorry, no tables are available for ' . $guests . ' guests.');
 
-            // Redirect back or to any other page
             return redirect()->back();
         }
     }

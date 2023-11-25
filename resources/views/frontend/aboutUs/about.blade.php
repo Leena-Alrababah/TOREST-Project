@@ -5,17 +5,17 @@
             <div class="container py-5">
                 <div class="row justify-content-center py-5">
                     <div class="col-lg-10 pt-lg-5 mt-lg-5 text-center">
-                        <h1 class="display-5 text-white mb-3 animated slideInDown">Enjoy Your Delicious Escapade With Us</h1>
-                        <p class="fs-4 text-white mb-4 animated slideInDown">Explore, Reserve, Review - Your City's Restaurants Guide!</p>
-                        <div class="position-relative w-75 mx-auto animated slideInDown">
-                            <input class="form-control border-0 rounded-pill w-100 py-3 ps-4 pe-5" type="text" placeholder="Enter a Restaurant Name">
-                            <button type="button" class="btn btn-primary rounded-pill py-2 px-4 position-absolute top-0 end-0 me-2" style="margin-top: 7px;">Search</button>
-                        </div>
+                        <h1 class="display-3 text-white animated slideInDown">About Us</h1>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb justify-content-center">
+                                <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
+                                <li class="breadcrumb-item text-white active" aria-current="page">About </li>
+                            </ol>
+                        </nav>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
     <!-- Navbar & Hero End -->
 @endsection
 
@@ -73,9 +73,9 @@ As we invite you to explore Irbid's culinary tapestry through our website, know 
             </div>
             <div class="row g-12 justify-content-center">
                 <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="team-item">
+                    <div class="team-item" >
                         <div class="overflow-hidden">
-                            <img class="img-fluid" src="./img2/me.jpg" alt="">
+                            <img class="img-fluid" src="{{ asset('frontend/img2/me.jpg')}}" alt="" >
                         </div>
                         <div class="position-relative d-flex justify-content-center" style="margin-top: -19px;">
                             <a class="btn btn-square mx-1" href=""><i class="fab fa-facebook-f"></i></a>
