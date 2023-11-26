@@ -48,7 +48,7 @@
 
                         </div>
                         <div class="col-4">
-                            <div class="fa fa-users text-primary">&nbsp;&nbsp;5 persons</div>
+                            <div class="fa fa-users text-primary">&nbsp;&nbsp;{{ $guests }} persons</div>
                         </div>
                     </div>
                 </div>

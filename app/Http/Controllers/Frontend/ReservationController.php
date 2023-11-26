@@ -16,9 +16,9 @@ class ReservationController extends Controller
 {
     public function stepOne(Request $request)
     {
-        $time = $request->time;
+        // $time = $request->time;
 
-        dd($time);
+        // dd($time);
 
 
         $request->validate([
@@ -91,12 +91,6 @@ class ReservationController extends Controller
         $guests = $reservationData['guests'];
         $filteredTables = $reservationData['filteredTables'];
 
-        // $filteredTables = $request->query('filteredTables');
-        //     $filteredTables = $restaurant->tables->filter(function ($table) use ($guests) {
-        //         return $table->status == 'available' && $table->capacity >= $guests;
-        //     });
-
-        // Your controller logic here
 
         return view('frontend.completeProcess.complete', compact('restaurant', 'date', 'time', 'guests', 'filteredTables'));
     }
@@ -105,6 +99,8 @@ class ReservationController extends Controller
 
     public function stepTwo(Request $request)
     {
+        // $table_id = $request->input('table_id');
+        // dd($table_id);
         // Validate the form data
         $request->validate([
             'table_id' => 'required|exists:tables,id', // Make sure the selected table exists
@@ -138,6 +134,7 @@ class ReservationController extends Controller
             foreach ($response['links'] as $link) {
                 if ($link['rel'] === 'approve') {
                     // Store specific data from the request in the session
+                    
                     session([
                         'paymentDetail' => [
                             'restaurant_id' => $request->input('restaurant_id'),
@@ -149,6 +146,7 @@ class ReservationController extends Controller
                             'phone' => $request->input('phone'),
                         ]
                     ]);
+                    
                     // dd(session('paymentDetail'));
                     return redirect()->away($link['href']);
                 }
@@ -169,32 +167,32 @@ class ReservationController extends Controller
         $response = $provider->capturePaymentOrder($request->token);
 
         // dd($response);
-        
+
 
         if (isset($response['status']) && $response['status'] == 'COMPLETED') {
             $payment = session('paymentDetail');
 
             $user = Auth::user();
-
+            // dd($payment);
             // Create a new reservation
             $reservation = new Reservation();
             $reservation->user_id = $user->id;
-            // $reservation->restaurant_id = $payment->restaurant_id;
-            $reservation->table_id = $payment->table_id;
-            $reservation->reservation_date = $payment->date;
-            $reservation->reservation_time = $payment->time;
+            $reservation->restaurant_id = $payment['restaurant_id'];
+            $reservation->table_id = $payment['table_id'];
+            $reservation->reservation_date = $payment['date'];
+            $reservation->reservation_time = $payment['time'];
             $reservation->reservation_status = 'pending';
-            $reservation->name = $payment->name;
-            $reservation->email = $payment->email;
-            $reservation->phone = $payment->phone;
+            $reservation->name = $payment ['name'];
+            $reservation->email = $payment['email'];
+            $reservation->phone = $payment['phone'];
 
 
             $reservation->save();
 
 
-            Alert::success('Success', 'Reservation confirmed!');
+            Alert::success('Success', 'Your Reservation is confirmed!');
 
-            return redirect()->back();
+            return redirect()->route('home');
 
 
 
