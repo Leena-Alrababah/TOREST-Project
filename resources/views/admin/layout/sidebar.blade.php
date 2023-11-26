@@ -57,5 +57,11 @@
                 <div>Provider</div>
             </a>
         </li>
+        <li class="menu-item ">
+            <a href="{{ route('dashboard.all_contact.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons mdi mdi-content-paste"></i>
+                <div>Contacts</div>
+            </a>
+        </li>
 </aside>
 <!-- / Menu -->

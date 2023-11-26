@@ -3,6 +3,7 @@
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ProviderController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\RestaurantController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\ReviewController;
@@ -25,6 +26,7 @@ Route::middleware(['auth', 'verified'])->name('dashboard.')->group(function () {
 
     Route::resource('menu', MenuController::class);
     Route::resource('tables', TableController::class);
+    Route::resource('all_contact', ContactUsController::class);
 });
 
 

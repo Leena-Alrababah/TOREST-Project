@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Frontend\ContactUSController as FrontendContactUsController;
 use App\Http\Controllers\FacebookController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -55,9 +56,9 @@ Route::get('/about', function () {
     return view('frontend.aboutUs.about');
 })->name('about');
 
-Route::get('/contact', function () {
-    return view('frontend.contactUs.contact');
-})->name('contact');
+
+Route::resource('contact', FrontendContactUsController::class);
+
 
 
 Route::middleware('auth')->group(function () {

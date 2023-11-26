@@ -67,30 +67,51 @@
 
                 </div>
                 <div class="col-lg-4 col-md-12 wow fadeInUp" data-wow-delay="0.5s">
-                    <form>
+                    <form action="{{ route('contact.store') }}" method="POST">
+                        @csrf
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control" id="name" placeholder="Your Name">
+                                    <input type="text" class="form-control" name="name" id="name" value="{{ old('name') }}" placeholder="Your Name">
                                     <label for="name">Your Name</label>
+                                    <span class="text-danger small">
+                                    @error('name')
+                                        {{ $message }}
+                                    @enderror
+                                </span>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input type="email" class="form-control" id="email" placeholder="Your Email">
+                                    <input type="email" class="form-control" name="email" id="email" value="{{ old('email') }}" placeholder="Your Email">
                                     <label for="email">Your Email</label>
+                                    <span class="text-danger small">
+                                    @error('email')
+                                        {{ $message }}
+                                    @enderror
+                                </span>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control" id="subject" placeholder="Subject">
+                                    <input type="text" class="form-control" name="subject" id="subject" value="{{ old('subject') }}" placeholder="Subject">
                                     <label for="subject">Subject</label>
+                                    <span class="text-danger small">
+                                    @error('subject')
+                                        {{ $message }}
+                                    @enderror
+                                </span>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-floating">
-                                    <textarea class="form-control" placeholder="Leave a message here" id="message" style="height: 100px"></textarea>
+                                    <textarea class="form-control" name="message"  placeholder="Leave a message here" id="message" style="height: 100px">{{ old('message') }}</textarea>
                                     <label for="message">Message</label>
+                                    <span class="text-danger small">
+                                    @error('message')
+                                        {{ $message }}
+                                    @enderror
+                                </span>
                                 </div>
                             </div>
                             <div class="col-12">
