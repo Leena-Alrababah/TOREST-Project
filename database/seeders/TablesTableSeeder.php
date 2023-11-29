@@ -42,6 +42,11 @@ class TablesTableSeeder extends Seeder
                 'name' => 'Table 4',
                 'capacity' => 8,
             ],
+            [
+                'restaurant_id' => 4,
+                'name' => 'Table 1',
+                'capacity' => 8,
+            ],
             // Add more table data as needed
         ];
 
