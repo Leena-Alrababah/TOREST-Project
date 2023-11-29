@@ -7,13 +7,14 @@ use Illuminate\Http\Request;
 use App\Models\Restaurant;
 use App\Models\Review;
 use RealRashid\SweetAlert\Facades\Alert;
+use function PHPUnit\Framework\isEmpty;
 
 class RestaurantController extends Controller
 {
     public function index()
     {
         // Retrieve all restaurants 
-        $restaurants = Restaurant::get();
+        $restaurants = Restaurant::latest()->paginate(3);
 
         return view('frontend.restaurants.restaurants', compact('restaurants'));
     }
@@ -47,5 +48,22 @@ class RestaurantController extends Controller
         Alert::success('Success', 'Your review has been added successfully!');
 
         return redirect()->back();
+    }
+
+
+    public function searchRestaurant(Request $request)
+    {
+        if ($request->search) {
+            $searchRestaurant = Restaurant::where('name', 'like', '%' . $request->search . '%')->latest()->paginate(3);
+            if ($searchRestaurant->items() == []) {
+                Alert::error('Error', 'There is No Restaurant');
+                return redirect()->route('restaurants.index');
+            } else {
+                return view('frontend.restaurants.search', compact('searchRestaurant'));
+            }
+        } else {
+            Alert::error('Error', 'Empty search');
+            return redirect()->back();
+        }
     }
 }

@@ -36,7 +36,22 @@
     visibility: visible;
     opacity: 1;
 }
-
+.page-item.active .page-link {
+    z-index: 3;
+    color: #ffffff;
+    background-color: #D32107;
+    border-color: #D32107;
+}
+.page-item.disabled .page-link {
+    color: #6c757d;
+    pointer-events: none;
+    cursor: auto;
+    background-color: #ffffff;
+    border-color: #b6bdca;
+}
+.page-item .page-link {
+    color: #0a0a0a;
+}
 
 /*** Button ***/
 .btn {

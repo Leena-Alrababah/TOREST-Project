@@ -2,22 +2,23 @@
 
 @section('header')
     <div class="container-fluid bg-primary py-5 mb-5 hero-header">
-            <div class="container py-5">
-                <div class="row justify-content-center py-5">
-                    <div class="col-lg-10 pt-lg-5 mt-lg-5 text-center">
-                        <h1 class="display-3 text-white animated slideInDown">Complete Reservation</h1>
-                        <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb justify-content-center">
-                                <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
-                                <li class="breadcrumb-item"><a href="{{route('restaurants.index')}}">All Restaurants</a></li>
-                                <li class="breadcrumb-item"><a href="">{{$restaurant->name}}</a></li>
-                                <li class="breadcrumb-item text-white active" aria-current="page">Complete your Reservation </li>
-                            </ol>
-                        </nav>
-                    </div>
+        <div class="container py-5">
+            <div class="row justify-content-center py-5">
+                <div class="col-lg-10 pt-lg-5 mt-lg-5 text-center">
+                    <h1 class="display-3 text-white animated slideInDown">Complete Reservation</h1>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb justify-content-center">
+                            <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('restaurants.index') }}">All Restaurants</a></li>
+                            <li class="breadcrumb-item"><a href="">{{ $restaurant->name }}</a></li>
+                            <li class="breadcrumb-item text-white active" aria-current="page">Complete your Reservation
+                            </li>
+                        </ol>
+                    </nav>
                 </div>
             </div>
         </div>
+    </div>
     <!-- Navbar & Hero End -->
 @endsection
 
@@ -71,7 +72,8 @@
                                     <select class="form-select" name="table_id" id="select1">
                                         <option value="" selected disabled>Select a Table</option>
                                         @foreach ($filteredTables as $table)
-                                            <option value="{{ $table->id }}">{{ $table->name }} ({{ $table->capacity }}
+                                            <option value="{{ $table->id }}">{{ $table->name }}
+                                                ({{ $table->capacity }}
                                                 Guests)</option>
                                         @endforeach
                                     </select>
@@ -84,7 +86,11 @@
                                         placeholder="Your Name" data-rule="minlen:4"
                                         data-msg="Please enter at least 4 characters">
                                     <label for="name">Your Name</label>
-                                    <div class="validate"></div>
+                                    <div class="text-danger small">
+                                        @error('name')
+                                            {{ $message }}
+                                        @enderror
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-lg-12">
@@ -92,7 +98,11 @@
                                     <input type="email" class="form-control" name="email" id="email"
                                         placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email">
                                     <label for="email">Your Email</label>
-                                    <div class="validate"></div>
+                                    <div class="text-danger small">
+                                        @error('email')
+                                            {{ $message }}
+                                        @enderror
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-lg-12">
@@ -117,8 +127,8 @@
                                     </div>
                                 </div>
                             </div>
-                           
-                            
+
+
                         </div>
                         <br><br>
                         <!-- Set up a container element for the button -->
@@ -129,11 +139,10 @@
                             <button type="submit" class="btn btn-primary">Confirm Reservation</button>
                         </div> --}}
                         <button class="py-1 px-4 col-lg-12" type="submit"
-                                            style="background-color: #fec43a; border-radius: 15px; border:#fec43a"
-                                            ><i class="fab fa-paypal"
-                                                style="color: #002f86;font-size:20px;font-style: italic;"></i>&nbsp;<span
-                                                style="color: #002f86; font-size:20px; font-weight:bold;font-style: italic;">Pay</span><span
-                                                style="color: #009cde; font-size:20px; font-weight:bold;font-style: italic;">Pal</span></button>
+                            style="background-color: #fec43a; border-radius: 15px; border:#fec43a"><i class="fab fa-paypal"
+                                style="color: #002f86;font-size:20px;font-style: italic;"></i>&nbsp;<span
+                                style="color: #002f86; font-size:20px; font-weight:bold;font-style: italic;">Pay</span><span
+                                style="color: #009cde; font-size:20px; font-weight:bold;font-style: italic;">Pal</span></button>
                     </form>
 
                 </div>
@@ -143,6 +152,6 @@
     </section>
     <!-- End Book A Table Section -->
 
-    
+
     <br><br><br>
 @endsection

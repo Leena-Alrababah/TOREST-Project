@@ -39,6 +39,7 @@ Route::get('/', [HomeController::class, 'homePage'])->name('home');
 Route::get('/all_restaurants', [FrontendRestaurantController::class, 'index'])->name('restaurants.index');
 Route::get('/restaurant/{restaurant}', [FrontendRestaurantController::class, 'show'])->name('restaurants.show');
 Route::post('/reserve_one', [FrontendReservationController::class, 'stepOne'])->name('reserve.stepOne');
+Route::get('/search', [FrontendRestaurantController::class, 'searchRestaurant'])->name('search');
 
 Route::middleware(['auth', 'verified'])->name('userSide.')->group(
     function () {
