@@ -16,8 +16,14 @@ class RestaurantController extends Controller
      */
     public function index(RestaurantsDataTable $dataTable)
     {
-        return $dataTable->render('admin.restaurants.index');
-        
+        // return $dataTable->render('admin.restaurants.index');
+        $isAdmin = auth()->user()->role == 'admin';
+
+        if ($isAdmin) {
+            return $dataTable->render('admin.restaurants.index');
+        } else {
+            return $dataTable->render('provider.aboutRestaurant.index');
+        }
     }
 
     /**

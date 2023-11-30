@@ -34,13 +34,13 @@ class RestaurantsDataTable extends DataTable
                 return $img = "<img width='100px' height='100px' src='" . asset($query->image1) . "'></img>";
             })
 
-            ->addColumn('Provider', function ($query) {
-                if ($query->user) {
-                    return $query->user->name;
-                } else {
-                    return 'N/A'; 
-                }
-            })
+            // ->addColumn('Provider', function ($query) {
+            //     if ($query->user) {
+            //         return $query->user->name;
+            //     } else {
+            //         return 'N/A'; 
+            //     }
+            // })
 
             ->rawColumns(['action', 'image'])
             ->setRowId('id');
@@ -54,6 +54,11 @@ class RestaurantsDataTable extends DataTable
      */
     public function query(Restaurant $model): QueryBuilder
     {
+        $user = auth()->user();
+
+        if ($user->role == 'provider') {
+            return $model->where('user_id', $user->id)->newQuery();
+        }
         return $model->newQuery();
     }
 
@@ -91,7 +96,7 @@ class RestaurantsDataTable extends DataTable
         return [
             Column::make('image')->width(150),
             Column::make('name'),
-            Column::make('Provider'),
+            // Column::make('Provider'),
             Column::make('address')->width(300),
             Column::make('discount_percentage'),
             Column::computed('action')

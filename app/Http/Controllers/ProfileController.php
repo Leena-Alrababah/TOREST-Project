@@ -18,12 +18,21 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): View
     {
-        $reservations = Reservation::where('user_id', Auth::user()->id)->get();
-        // dd($reservations);
-        return view('profile.edit', [
-            'user' => $request->user(),
-            'reservations' => $reservations ,
-        ]);
+
+        $user = Auth::user();
+
+        if ($user->role == 'admin') {
+            return view('admin.profile.profile');
+        } elseif ($user->role == 'provider') {
+            return view('provider.profile.profile');
+        } else {
+            $reservations = Reservation::where('user_id', $user->id)->get();
+
+            return view('profile.edit', [
+                'user' => $user,
+                'reservations' => $reservations,
+            ]);
+        }
     }
 
     /**

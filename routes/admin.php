@@ -27,6 +27,12 @@ Route::middleware(['auth', 'verified'])->name('dashboard.')->group(function () {
     Route::resource('menu', MenuController::class);
     Route::resource('tables', TableController::class);
     Route::resource('all_contact', ContactUsController::class);
+
+
+    //** Profile Routes
+    // Route::get('/profile', [AdminController::class, 'adminProfile'])->name('profile');
+    // Route::get('/profile/change-password', [AdminController::class, 'changePassword'])->name('profile.change-password');
+    // Route::post('/profile/update-password/{id}', [AdminController::class, 'updatePassword'])->name('profile.update-password');
 });
 
 
