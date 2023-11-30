@@ -20,61 +20,36 @@
 
                     <div class="form-floating form-floating-outline mb-4">
                         <input type="text" class="form-control" id="menu-name" placeholder="Menu Item Name"
-                            name="name" aria-label="Menu Item Name" required />
+                            name="name" value="{{old('name')}}" aria-label="Menu Item Name" required />
                         <label for="menu-name">Menu Item Name*</label>
-                        <span class="text-danger small">
-                            @error('name')
-                                {{ $message }}
-                            @enderror
-                        </span>
-                    </div>
+                                            </div>
 
                     <div class="form-floating form-floating-outline mb-4">
                         <input type="file" id="menu-image" class="form-control" placeholder="Menu Item Image"
-                            aria-label="Menu Item Image" name="image" accept="image/*" />
+                            aria-label="Menu Item Image" name="image" value="{{old('image')}}" accept="image/*" />
                         <label for="menu-image">Menu Item Image</label>
-                        <span class="text-danger small">
-                            @error('image')
-                                {{ $message }}
-                            @enderror
-                        </span>
-                    </div>
+                                            </div>
 
                     <div class="form-floating form-floating-outline mb-4">
                         <textarea class="form-control" id="menu-description" name="description" placeholder="Menu Item Description"
-                            rows="4" aria-label="Menu Item Description"></textarea>
+                            rows="4" aria-label="Menu Item Description">{{old('description')}}</textarea>
                         <label for="menu-description">Menu Item Description</label>
-                        <span class="text-danger small">
-                            @error('description')
-                                {{ $message }}
-                            @enderror
-                        </span>
-                    </div>
+                                        </div>
 
                     <div class="form-floating form-floating-outline mb-4">
                         <input type="number" step="0.01" class="form-control" id="menu-price"
-                            placeholder="Menu Item Price" name="price" aria-label="Menu Item Price"  />
+                            placeholder="Menu Item Price" name="price" value="{{old('price')}}" aria-label="Menu Item Price"  />
                         <label for="menu-price">Menu Item Price*</label>
-                        <span class="text-danger small">
-                            @error('price')
-                                {{ $message }}
-                            @enderror
-                        </span>
-                    </div>
+                                            </div>
 
                     <div class="form-floating form-floating-outline mb-4">
-                        <select class="form-select" id="menu-type" name="type" aria-label="Menu Item Type" required>
+                        <select class="form-select" id="menu-type" name="type" value="{{old('type')}}" aria-label="Menu Item Type" required>
                             <option value="" selected>Menu Item Type*</option>
                             <option value="breakfast">Breakfast</option>
                             <option value="lunch">Lunch</option>
                             <option value="dinner">Dinner</option>
                         </select>
-                        <span class="text-danger small">
-                            @error('type')
-                                {{ $message }}
-                            @enderror
-                        </span>
-                    </div>
+                                            </div>
 
                 </div>
 

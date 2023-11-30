@@ -18,12 +18,7 @@
                     <input type="text" class="form-control" id="restaurant-name" placeholder="Enter restaurant name"
                         name="name" aria-label="restaurant name" value="{{ $restaurant->name }}">
                     <label for="restaurant-name">Restaurant Name</label>
-                    <span class="text-danger small">
-                        @error('name')
-                            {{ $message }}
-                        @enderror
-                    </span>
-                </div>
+                                    </div>
 
                 <div class="row">
                     <!-- Image 1 -->
@@ -32,12 +27,7 @@
                             <input class="form-control" type="file" id="image1" name="image1"
                                 value="{{ $restaurant->image1 }}">
                             <label for="image1">Image 1</label>
-                            <span class="text-danger small">
-                                @error('image1')
-                                    {{ $message }}
-                                @enderror
-                            </span>
-                        </div>
+                                                    </div>
                     </div>
 
                     <!-- Image 2 -->
@@ -46,12 +36,7 @@
                             <input class="form-control" type="file" id="image2" name="image2"
                                 value="{{ $restaurant->image2 }}">
                             <label for="image2">Image 2</label>
-                            <span class="text-danger small">
-                                @error('image2')
-                                    {{ $message }}
-                                @enderror
-                            </span>
-                        </div>
+                                                    </div>
                     </div>
                 </div>
 
@@ -63,12 +48,7 @@
                             <input class="form-control" type="file" id="image3" name="image3"
                                 value="{{ $restaurant->image3 }}">
                             <label for="image3">Image 3</label>
-                            <span class="text-danger small">
-                                @error('image3')
-                                    {{ $message }}
-                                @enderror
-                            </span>
-                        </div>
+                                                    </div>
                     </div>
 
                     <!-- Image 4 -->
@@ -77,12 +57,7 @@
                             <input class="form-control" type="file" id="image4" name="image4"
                                 value="{{ $restaurant->image4 }}">
                             <label for="image4">Image 4</label>
-                            <span class="text-danger small">
-                                @error('image4')
-                                    {{ $message }}
-                                @enderror
-                            </span>
-                        </div>
+                                                    </div>
                     </div>
                 </div>
 
@@ -95,12 +70,7 @@
                                 placeholder="Enter opening hours (From)" name="opening_hours_from"
                                 aria-label="opening hours (From)" value="{{ $restaurant->opening_hours_from }}">
                             <label for="opening-hours-from">Opening Hours (From)</label>
-                            <span class="text-danger small">
-                                @error('opening_hours_from')
-                                    {{ $message }}
-                                @enderror
-                            </span>
-                        </div>
+                                                    </div>
                     </div>
 
                     <!-- Opening Hours (To) -->
@@ -110,16 +80,17 @@
                                 placeholder="Enter opening hours (To)" name="opening_hours_to"
                                 aria-label="opening hours (To)" value="{{ $restaurant->opening_hours_to }}">
                             <label for="opening-hours-to">Opening Hours (To)</label>
-                            <span class="text-danger small">
-                                @error('opening_hours_to')
-                                    {{ $message }}
-                                @enderror
-                            </span>
-                        </div>
+                                                    </div>
                     </div>
                 </div>
 
-
+                <!-- Restaurant Location -->
+                <div class="form-floating form-floating-outline mb-4">
+                    <input type="text" class="form-control" id="restaurant-location"
+                        placeholder="Enter restaurant location" name="address" aria-label="restaurant address"
+                        value="{{ $restaurant->address }}">
+                    <label for="restaurant-location">Restaurant Address</label>
+                                </div>
 
                 <!-- Restaurant Location -->
                 <div class="form-floating form-floating-outline mb-4">
@@ -127,24 +98,14 @@
                         placeholder="Enter restaurant location" name="location" aria-label="restaurant location"
                         value="{{ $restaurant->location }}">
                     <label for="restaurant-location">Restaurant Location</label>
-                    <span class="text-danger small">
-                        @error('location')
-                            {{ $message }}
-                        @enderror
-                    </span>
-                </div>
+                                    </div>
 
                 <!-- Restaurant Description -->
                 <div class="form-floating form-floating-outline mb-4">
-                    <textarea class="form-control" id="restaurant-description" placeholder="Enter restaurant description" name="description"
-                        aria-label="restaurant description">{{ $restaurant->description }}</textarea>
+                    <textarea class="form-control" id="restaurant-description" placeholder="Enter restaurant description"
+                        name="description" aria-label="restaurant description">{{ $restaurant->description }}</textarea>
                     <label for="restaurant-description">Restaurant Description</label>
-                    <span class="text-danger small">
-                        @error('description')
-                            {{ $message }}
-                        @enderror
-                    </span>
-                </div>
+                                    </div>
 
                 <!-- Discount Percentage (nullable) -->
                 <div class="form-floating form-floating-outline mb-4">
@@ -152,12 +113,7 @@
                         placeholder="Enter discount percentage" name="discount_percentage"
                         aria-label="discount percentage" value="{{ $restaurant->discount_percentage }}">
                     <label for="discount-percentage">Discount Percentage </label>
-                    <span class="text-danger small">
-                        @error('discount_percentage')
-                            {{ $message }}
-                        @enderror
-                    </span>
-                </div>
+                                    </div>
 
                 <!-- Dishes Type (Select with "Other" option) -->
                 <div class="form-floating form-floating-outline mb-4">
@@ -170,12 +126,7 @@
                         <option value="Other">Other</option>
                     </select>
                     <label for="dishes-type">Dishes Type</label>
-                    <span class="text-danger small">
-                        @error('dishes_type')
-                            {{ $message }}
-                        @enderror
-                    </span>
-                </div>
+                                    </div>
 
                 <!-- Provider Selection -->
                 <div class="form-floating form-floating-outline mb-4">
@@ -190,12 +141,7 @@
                     </select>
 
                     <label for="provider">Select Provider</label>
-                    <span class="text-danger small">
-                        @error('provider')
-                            {{ $message }}
-                        @enderror
-                    </span>
-                </div>
+                                    </div>
 
 
 

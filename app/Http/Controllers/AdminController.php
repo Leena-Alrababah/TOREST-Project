@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\User;
 use App\DataTables\AdminsDataTable;
 
@@ -36,7 +37,16 @@ class AdminController extends Controller
             'name' => ['required', 'max:20'],
             'email' => ['required', 'email', 'unique:users,email'],
             'phone' => ['nullable', 'digits:10'],
-            'password' => ['required'],
+            'password' => [
+                'required',
+                'min:8',              // Minimum length of 8 characters
+                'regex:/[A-Z]/',      // At least one uppercase letter
+                'regex:/[a-z]/',      // At least one lowercase letter
+                'regex:/[0-9]/',      // At least one number
+                // You can add more specific rules or constraints as needed
+            ],
+        ], [
+            'password.regex' => 'The password must contain at least one uppercase letter, one lowercase letter, and one number.',
         ]);
 
 
@@ -60,7 +70,11 @@ class AdminController extends Controller
 
         $customer->save();
 
-        return redirect()->route('dashboard.admins.index')->with('success', 'Admin has been successfully added.');
+        $notification = array(
+            'message' => 'Admin has been successfully added.',
+            'alert-type' => 'success',
+        );
+        return redirect()->route('dashboard.admins.index')->with($notification);
     }
 
     /**

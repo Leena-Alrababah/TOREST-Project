@@ -74,8 +74,12 @@ class MenuController extends Controller
         // Save the menu item to the database
         $menu->save();
 
+        $notification = array(
+            'message' => 'Menu item has been added successfully.',
+            'alert-type' => 'success',
+        );
         // Redirect back with a success message
-        return redirect()->route('dashboard.menu.index')->with('success', 'Menu item has been added successfully.');
+        return redirect()->route('dashboard.menu.index')->with($notification);
     }
 
     /**
@@ -129,8 +133,12 @@ class MenuController extends Controller
 
         $menu->save();
 
+        $notification = array(
+            'message' => 'Menu item has been updated successfully.',
+            'alert-type' => 'success',
+        );
         // Redirect back with a success message
-        return redirect()->route('dashboard.menu.index')->with('success', 'Menu item has been updated successfully.');
+        return redirect()->route('dashboard.menu.index')->with($notification);
     }
 
 

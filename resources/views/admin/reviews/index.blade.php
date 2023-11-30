@@ -14,11 +14,11 @@
   <div class="card">
     <div class="card-datatable table-responsive">
                     <h4 class="card-header">Manage Reviews</h4>
-    <div class="card-datatable table-responsive">
+                <div class="table-responsive text-nowrap">
 
-<button type="button" class="btn btn-success " style="margin: 20px ;">
+{{-- <button type="button" class="btn btn-success " style="margin: 20px ;">
        <a href="./restaurant-add.html" class="text-white">+ Add Review</a>
-      </button>
+      </button> --}}
 
       <div class="card-body">
                     {{ $dataTable->table() }}

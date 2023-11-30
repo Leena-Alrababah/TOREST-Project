@@ -84,7 +84,11 @@ class ReservationController extends Controller
 
         $reservation->save();
 
-        return redirect()->route('dashboard.reservations.index')->with('success', 'Reservation has been added successfully.');
+        $notification = array(
+            'message' => 'Reservation has been added successfully.',
+            'alert-type' => 'success',
+        );
+        return redirect()->route('dashboard.reservations.index')->with($notification);
     }
 
 
@@ -115,11 +119,14 @@ class ReservationController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Reservation $reservation)
+    public function destroy($id)
     {
-        //
-    }
+        $reservation = Reservation::findOrFail($id);
+        // $this->deleteImage($restaurant->image);
+        $reservation->delete();
 
+        return response(['status' => 'success', 'message' => 'Deleted Successfully!']);
+    }
     // public function providerReservations(ReservationsDataTable $dataTable)
     // {
     //     return $dataTable->render('provider.reservations.index');

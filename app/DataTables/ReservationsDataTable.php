@@ -24,25 +24,38 @@ class ReservationsDataTable extends DataTable
     {
         return (new EloquentDataTable($query))
             ->addColumn('action', function ($query) {
-                $editBtn = "<a href='' class='btn btn-dark'><i class='far fa-edit'></i></a>";
-                $deleteBtn = "<a href='' class='btn btn-danger ml-2 delete-item'><i class='fas fa-trash-alt'></i></a>";
+                $deleteBtn = "<a href='" . route('dashboard.reservations.destroy', $query->id) . "' class='btn btn-danger ml-2 delete-item'><i class='fas fa-trash-alt'></i></a>";
 
-            $user = auth()->user();
-            if ($user->role == 'provider') {
-                return "<div class='btn-group'></div>";
-            } else {
-                return "<div class='btn-group'>"  . $deleteBtn . "</div>";
-            }           
-         })
-
-
-            ->addColumn('restaurant', function ($reservation) {
-                return $reservation->restaurant_name;
+                $user = auth()->user();
+                if ($user->role == 'provider') {
+                    return "<div class='btn-group'></div>";
+                } else {
+                    return "<div class='btn-group'>"  . $deleteBtn . "</div>";
+                }
             })
-           
-            ->addColumn('table', function ($reservation) {
-                return $reservation->table_name;
+
+            ->addColumn('restaurant', function ($query) {
+                if ($query->restaurant) {
+                    return $query->restaurant->name;
+                } else {
+                    return 'N/A';
+                }
             })
+            ->addColumn('table', function ($query) {
+                if ($query->table) {
+                    return $query->table->name;
+                } else {
+                    return 'N/A';
+                }
+            })
+
+            // ->addColumn('restaurant', function ($reservation) {
+            //     return $reservation->restaurant_name;
+            // })
+
+            // ->addColumn('table', function ($reservation) {
+            //     return $reservation->table_name;
+            // })
 
             ->addColumn('status', function ($query) {
                 return $query->reservation_status;
@@ -50,7 +63,7 @@ class ReservationsDataTable extends DataTable
             ->rawColumns(['action', 'status'])
             ->setRowId('id');
     }
-    
+
 
     /**
      * Get query source of dataTable.
@@ -64,27 +77,39 @@ class ReservationsDataTable extends DataTable
     // }
 
 
+    // public function query(Reservation $model)
+    // {
+    //     $user = auth()->user(); // Get the currently logged-in user
+
+    //     if ($user->role == 'provider') {
+    //         // If the user is a provider, fetch reservations where the restaurant has the same provider
+    //         return $model
+    //             ->join('restaurants', 'reservations.restaurant_id', '=', 'restaurants.id')
+    //             ->join('tables', 'reservations.table_id', '=', 'tables.id') // Join the tables table
+    //             ->where('restaurants.user_id', $user->id)
+    //             ->select('reservations.*', 'restaurants.name as restaurant_name', 'tables.name as table_name') // Select both restaurant and table names
+    //             ->newQuery();
+    //     }
+
+    //     // For other roles or scenarios, return a default query
+    //     return $model->select(['reservations.*', 'restaurants.name as restaurant_name', 'tables.name as table_name'])
+    //     ->leftJoin('restaurants', 'reservations.restaurant_id', '=', 'restaurants.id')
+    //     ->leftJoin('tables', 'reservations.table_id', '=', 'tables.id'); // Join the tables table and select the table name
+    // }
+
     public function query(Reservation $model)
     {
-        $user = auth()->user(); // Get the currently logged-in user
+        $user = auth()->user();
 
         if ($user->role == 'provider') {
-            // If the user is a provider, fetch reservations where the restaurant has the same provider
-            return $model
-                ->join('restaurants', 'reservations.restaurant_id', '=', 'restaurants.id')
-                ->join('tables', 'reservations.table_id', '=', 'tables.id') // Join the tables table
-                ->where('restaurants.user_id', $user->id)
-                ->select('reservations.*', 'restaurants.name as restaurant_name', 'tables.name as table_name') // Select both restaurant and table names
-                ->newQuery();
+            // Assuming the reservation relationship with restaurant and table is defined in the Reservation model
+            return $model->whereHas('restaurant', function ($query) {
+                $query->where('user_id', auth()->user()->id);
+            })->with(['restaurant', 'table'])->newQuery();
         }
-
-        // For other roles or scenarios, return a default query
-        return $model->select(['reservations.*', 'restaurants.name as restaurant_name', 'tables.name as table_name'])
-        ->leftJoin('restaurants', 'reservations.restaurant_id', '=', 'restaurants.id')
-        ->leftJoin('tables', 'reservations.table_id', '=', 'tables.id'); // Join the tables table and select the table name
+        return $model->newQuery();
     }
 
-   
 
     /**
      * Optional method if you want to use html builder.
@@ -94,20 +119,20 @@ class ReservationsDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
-                    ->setTableId('reservations-table')
-                    ->columns($this->getColumns())
-                    ->minifiedAjax()
-                    //->dom('Bfrtip')
-                    ->orderBy(0)
-                    ->selectStyleSingle()
-                    ->buttons([
-                        Button::make('excel'),
-                        Button::make('csv'),
-                        Button::make('pdf'),
-                        Button::make('print'),
-                        Button::make('reset'),
-                        Button::make('reload')
-                    ]);
+            ->setTableId('reservations-table')
+            ->columns($this->getColumns())
+            ->minifiedAjax()
+            //->dom('Bfrtip')
+            ->orderBy(0)
+            ->selectStyleSingle()
+            ->buttons([
+                Button::make('excel'),
+                Button::make('csv'),
+                Button::make('pdf'),
+                Button::make('print'),
+                Button::make('reset'),
+                Button::make('reload')
+            ]);
     }
 
     /**
@@ -148,8 +173,8 @@ class ReservationsDataTable extends DataTable
                     ->printable(false)
                     ->width(60)
                     ->addClass('text-center'),
-            ];        }        
-        
+            ];
+        }
     }
 
     /**

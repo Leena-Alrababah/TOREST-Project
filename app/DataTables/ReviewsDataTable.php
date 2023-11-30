@@ -26,30 +26,42 @@ class ReviewsDataTable extends DataTable
     {
         return (new EloquentDataTable($query))
             ->addColumn('action', function ($query) {
-                $editBtn = "<a href='' class='btn btn-dark'><i class='far fa-edit'></i></a>";
-                $deleteBtn = "<a href='' class='btn btn-danger ml-2 delete-item'><i class='fas fa-trash-alt'></i></a>";
+                $deleteBtn = "<a href='" . route('dashboard.reviews.destroy', $query->id) . "' class='btn btn-danger ml-2 delete-item'><i class='fas fa-trash-alt'></i></a>";
 
-                return "<div class='btn-group'>" . $editBtn . $deleteBtn . "</div>";
+                $user = auth()->user();
+                if ($user->role == 'provider') {
+                    return "<div class='btn-group'></div>";
+                } else {
+                    return "<div class='btn-group'>"  . $deleteBtn . "</div>";
+                }
             })
 
             
-            // ->addColumn('user', function ($query) {
-            //     if ($query->user) {
-            //         return $query->user->name;
-            //     } else {
-            //         return 'N/A'; // Or any other placeholder value you want to use
-            //     }
+            ->addColumn('user', function ($query) {
+                if ($query->user) {
+                    return $query->user->name;
+                } else {
+                    return 'N/A'; // Or any other placeholder value you want to use
+                }
+            })
+
+            ->addColumn('restaurant', function ($query) {
+                if ($query->restaurant) {
+                    return $query->restaurant->name;
+                } else {
+                    return 'N/A'; // Or any other placeholder value you want to use
+                }
+            })
+
+            // ->addColumn('user', function ($review) {
+            //     return $review->user_name;
             // })
 
-            ->addColumn('user', function ($review) {
-                return $review->user_name;
-            })
+            // ->addColumn('restaurant', function ($review) {
+            //     return $review->restaurant_name;
+            // })
 
-            ->addColumn('restaurant', function ($review) {
-                return $review->restaurant_name;
-            })
-
-            ->rawColumns(['action', 'image'])
+            ->rawColumns(['action'])
             ->setRowId('id');
     }
 
@@ -60,28 +72,42 @@ class ReviewsDataTable extends DataTable
      * @return \Illuminate\Database\Eloquent\Builder
      */
 
-   
+
+    // public function query(Review $model)
+    // {
+
+
+    //     $user = auth()->user(); // Get the currently logged-in user
+
+    //     if ($user->role == 'provider') {
+    //         // If the user is a provider, fetch reviews where the restaurant has the same provider
+    //         return $model->join('restaurants', 'reviews.restaurant_id', '=', 'restaurants.id')
+    //         ->join('users', 'reviews.user_id', '=', 'users.id')
+    //         ->where('restaurants.user_id', $user->id)
+    //         ->select('reviews.*', 'users.name as user_name')
+    //         ->newQuery();
+    //     }
+
+    //     // For other roles or scenarios, return a default query
+    //     // return $model->newQuery();
+
+    //     return $model->select(['reviews.*', 'users.name as user_name', 'restaurants.name as restaurant_name'])
+    //         ->leftJoin('users', 'reviews.user_id', '=', 'users.id')
+    //         ->leftJoin('restaurants', 'reviews.restaurant_id', '=', 'restaurants.id');
+    // }
     public function query(Review $model)
     {
-        
-
-        $user = auth()->user(); // Get the currently logged-in user
+        $user = auth()->user();
 
         if ($user->role == 'provider') {
-            // If the user is a provider, fetch reviews where the restaurant has the same provider
-            return $model->join('restaurants', 'reviews.restaurant_id', '=', 'restaurants.id')
-            ->join('users', 'reviews.user_id', '=', 'users.id')
-            ->where('restaurants.user_id', $user->id)
-            ->select('reviews.*', 'users.name as user_name')
-            ->newQuery();
+            // Assuming the reservation relationship with restaurant and table is defined in the Reservation model
+            return $model->whereHas('restaurant',
+                function ($query) {
+                    $query->where('user_id', auth()->user()->id);
+                }
+            )->with(['restaurant', 'user'])->newQuery();
         }
-
-        // For other roles or scenarios, return a default query
-        // return $model->newQuery();
-
-        return $model->select(['reviews.*', 'users.name as user_name', 'restaurants.name as restaurant_name'])
-            ->leftJoin('users', 'reviews.user_id', '=', 'users.id')
-            ->leftJoin('restaurants', 'reviews.restaurant_id', '=', 'restaurants.id');
+        return $model->newQuery();
     }
 
 
@@ -120,8 +146,8 @@ class ReviewsDataTable extends DataTable
         return [
             Column::make('user')->width(150),
             Column::make('restaurant'),
-            Column::make('review_text'),
-            Column::make('rating')->width(300),
+            Column::make('review_text')->width(300),
+            Column::make('rating'),
             // Column::make('discount_percentage'),
             Column::computed('action')
                 ->exportable(false)

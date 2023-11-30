@@ -9,7 +9,7 @@
         <!-- Offcanvas to add new customer -->
 
         <div class="offcanvas-header border-bottom">
-            <h5 id="offcanvasEcommerceCustomerAddLabel" class="offcanvas-title">Add Menu Item</h5>
+            <h5 id="offcanvasEcommerceCustomerAddLabel" class="offcanvas-title">Edit Table</h5>
         </div>
 
         <div class="offcanvas-body mx-0 flex-grow-0">
@@ -58,7 +58,7 @@
                 </div>
 
                 <div class="pt-3">
-                    <button type="submit" class="btn btn-success me-sm-3 me-1">Add Table</button>
+                    <button type="submit" class="btn btn-success me-sm-3 me-1">Edit Table</button>
                 </div>
             </form>
 

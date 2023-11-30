@@ -60,8 +60,12 @@ class TableController extends Controller
         // Save the table to the database
         $table->save();
 
+        $notification = array(
+            'message' => 'Table has been added successfully.',
+            'alert-type' => 'success',
+        );
         // Redirect back with a success message
-        return redirect()->route('dashboard.tables.index')->with('success', 'Table has been added successfully.');
+        return redirect()->route('dashboard.tables.index')->with($notification);
     }
 
 
@@ -100,21 +104,27 @@ class TableController extends Controller
         // Update the table attributes
         $table->name = $request->name;
         $table->capacity = $request->capacity;
-        // $table->status = $request->status;
+        $table->status = $request->status;
 
         $table->save();
 
+        $notification = array(
+            'message' => 'Table has been updated successfully.',
+            'alert-type' => 'success',
+        );
         // Redirect back with a success message
-        return redirect()->route('dashboard.tables.index')->with('success', 'Table has been updated successfully.');
+        return redirect()->route('dashboard.tables.index')->with($notification);
     }
 
 
     /**
      * Remove the specified resource from storage.
      */
+    
     public function destroy($id)
     {
         $table = Table::findOrFail($id);
+        // $this->deleteImage($menu->image);
         $table->delete();
 
         return response(['status' => 'success', 'message' => 'Deleted Successfully!']);

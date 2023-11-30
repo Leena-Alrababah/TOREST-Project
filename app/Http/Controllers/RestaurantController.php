@@ -43,7 +43,7 @@ class RestaurantController extends Controller
             'opening_hours_from' => ['required', 'date_format:H:i'],
             'opening_hours_to' => ['required', 'date_format:H:i'],
             'address' => ['required', 'max:255'],
-            'location' => ['required', 'max:255'],
+            'location' => ['required', 'url', 'max:255'],
             'description' => ['required'],
             'discount_percentage' => ['required', 'numeric', 'between:0,100'],
             'dishes_type' => ['required'],
@@ -85,7 +85,12 @@ class RestaurantController extends Controller
 
         $restaurant->save();
 
-        return redirect()->route('dashboard.restaurants.index')->with('success', 'Restaurant has been successfully added.');
+        $notification = array(
+            'message' => 'Restaurant has been successfully added.',
+            'alert-type' => 'success',
+        );
+
+        return redirect()->route('dashboard.restaurants.index')->with($notification);
     }
 
 
@@ -122,18 +127,15 @@ class RestaurantController extends Controller
             'opening_hours_from' => 'required',
             'opening_hours_to' => 'required',
             'address' => 'required|max:255',
-            'location' => 'required|max:255',
+            'location' => ['required', 'url', 'max:255'],
             'description' => 'required',
             'discount_percentage' => 'required|numeric|between:0,100',
             'dishes_type' => 'required',
-            'provider' => 'required|exists:users,id', // Add validation for provider ID
-            // Add other relevant validation rules as needed
+            'provider' => 'required|exists:users,id', 
         ]);
 
-        // Find the restaurant by its ID
         $restaurant = Restaurant::findOrFail($id);
 
-        // Define an array to hold the new image filenames
         $filenames = [];
 
         for ($i = 1; $i <= 4; $i++) {
@@ -168,7 +170,11 @@ class RestaurantController extends Controller
 
         $restaurant->save();
 
-        return redirect()->route('dashboard.restaurants.index')->with('success', 'Restaurant has been successfully updated.');
+        $notification = array(
+            'message' => 'Restaurant has been successfully updated.',
+            'alert-type' => 'success',
+        );
+        return redirect()->route('dashboard.restaurants.index')->with($notification);
     }
 
 
