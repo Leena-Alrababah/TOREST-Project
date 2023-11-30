@@ -64,20 +64,25 @@
 <div class="card mb-4">
     <h4 class="card-header">Profile Details</h4>
     <!-- Account -->
-    <form method="post" action="{{ route('profile.update') }}" id="formAccountSettings">
+    <form method="post" action="{{ route('profile.update') }}" id="formAccountSettings" enctype="multipart/form-data">
         @csrf
         @method('patch')
         <div class="card-body">
             <div class="d-flex align-items-start align-items-sm-center gap-4">
-                <img src="{{ Auth::user()->image }}" alt="user-avatar" class="d-block w-px-120 h-px-120 rounded"
+                <img src="{{ asset(Auth::user()->image) }}" alt="user-avatar" class="d-block w-px-120 h-px-120 rounded"
                     id="uploadedAvatar" style="height: 120px; width: 120px; border-radius: 80px;" />
                 <div class="button-wrapper">
                     <label for="upload" class="btn btn-dark me-2 mb-3" tabindex="0">
                         <span class="d-none d-sm-block">Upload new photo</span>
                         <i class="mdi mdi-tray-arrow-up d-block d-sm-none"></i>
-                        <input type="file" id="upload" class="account-file-input" hidden
-                            accept="image/png, image/jpeg"/>
+                        <input type="file" id="upload" class="account-file-input" name="image" hidden
+                            accept="image/png, image/jpeg" />
                     </label>
+                    @if ($errors->has('image'))
+                            <div class="mt-2 text-danger small">
+                                {{ $errors->first('image') }}
+                            </div>
+                        @endif
                     <div class="text-muted small">Allowed JPG, GIF or PNG. Max size of 800K</div>
                 </div>
             </div>
@@ -88,10 +93,11 @@
                 <div class="col-md-6">
                     <div class="form-floating form-floating-outline">
                         <input class="form-control" type="text" id="firstName" name="name"
-                            value="{{ Auth::user()->name }}" autofocus />
+                            value="{{ Auth::user()->name }}" @if (Auth::user()->google_id != null || Auth::user()->facebook_id != null) readonly @endif
+                            autofocus />
                         <label for="firstName">Name</label>
                         @if ($errors->has('name'))
-                            <div class="mt-2 text-danger">
+                            <div class="mt-2 text-danger small">
                                 {{ $errors->first('name') }}
                             </div>
                         @endif
@@ -106,7 +112,7 @@
                         </div>
                         <span class="input-group-text">JOD (+962)</span>
                         @if ($errors->has('phone'))
-                            <div class="mt-2 text-danger">
+                            <div class="mt-2 text-danger small">
                                 {{ $errors->first('phone') }}
                             </div>
                         @endif
@@ -115,10 +121,11 @@
                 <div class="col-md-6">
                     <div class="form-floating form-floating-outline">
                         <input class="form-control" type="email" id="email" name="email"
-                            value="{{ Auth::user()->email }}" placeholder="john.doe@example.com" />
+                            value="{{ Auth::user()->email }}" placeholder="john.doe@example.com"
+                            @if (Auth::user()->google_id != null || Auth::user()->facebook_id != null) readonly @endif />
                         <label for="email">E-mail</label>
                         @if ($errors->has('email'))
-                            <div class="mt-2 text-danger">
+                            <div class="mt-2 text-danger small">
                                 {{ $errors->first('email') }}
                             </div>
                         @endif
@@ -128,7 +135,11 @@
             <div class="mt-4">
                 <button type="submit" class="btn btn-success me-2">Save changes</button>
                 {{-- <button type="submit" class="btn btn-outline-success">Save changes</button> --}}
-
+                @if (session('status') === 'profile-updated')
+                    <?php
+                    Alert::success('Success', 'Your information is updated successfully!');
+                    ?>
+                @endif
                 {{-- <button type="reset" class="btn btn-outline-danger">Reset</button> --}}
             </div>
     </form>

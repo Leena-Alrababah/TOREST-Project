@@ -26,7 +26,6 @@ class CustomerController extends Controller
     public function create()
     {
         return view('admin.customers.create');
-
     }
 
     /**
@@ -36,12 +35,32 @@ class CustomerController extends Controller
     {
 
         $request->validate([
-            'image' => ['image'], 
+            'image' => ['image'],
             'name' => ['required', 'max:20'],
             'email' => ['required', 'email', 'unique:users,email'],
             'phone' => ['nullable', 'digits:10'],
-            'password' => ['required'],
-        ]);
+            'password' => [
+                'required',
+                'string',
+                'min:8',
+                'regex:/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).+$/u',
+            ],
+        ],
+            [
+                'image.image' => 'The selected file must be an image.',
+                'name.required' => 'The name field is required.',
+                'name.max' => 'The name may not be greater than 20 characters.',
+                'email.required' => 'The email field is required.',
+                'email.email' => 'The email must be a valid email address.',
+                'email.unique' => 'The email has already been taken.',
+                'phone.digits' => 'The phone must be 10 digits.',
+                'password.required' => 'The password field is required.',
+                'password.string' => 'The password must be a string.',
+                'password.min' => 'The password must be at least 8 characters.',
+                'password.regex' => 'The password must contain at least one uppercase letter, one lowercase letter, and one digit.',
+            ]
+        );
+
 
 
         $filename = '';
@@ -64,7 +83,11 @@ class CustomerController extends Controller
 
         $customer->save();
 
-        return redirect()->route('dashboard.customers.index')->with('success', 'Cutomer has been successfully added.');
+        $notification = array(
+            'message' => 'Cutomer has been added successfully',
+            'alert-type' => 'success',
+        );
+        return redirect()->route('dashboard.customers.index')->with($notification);
     }
 
 
@@ -103,7 +126,7 @@ class CustomerController extends Controller
         $customer = User::findOrFail($id);
         // $this->deleteImage($customer->image);
         $customer->delete();
-        
+
         return response(['status' => 'success', 'message' => 'Deleted Successfully!']);
     }
 }

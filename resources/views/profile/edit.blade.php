@@ -60,11 +60,12 @@
         <div class="row">
             <div class="col-md-12">
                 @include('profile.partials.update-profile-information-form')
+                @include('profile.partials.reservations-profile')
                 @if (Auth::user()->google_id == null && Auth::user()->facebook_id == null)
                     @include('profile.partials.update-password-form')
+                    @include('profile.partials.delete-user-form')
                 @endif
 
-                @include('profile.partials.delete-user-form')
 
 
             </div>

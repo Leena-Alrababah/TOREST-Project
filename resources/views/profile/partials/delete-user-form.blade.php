@@ -75,9 +75,9 @@
                 <div class="form-floating form-floating-outline">
                     <input class="form-control" type="password" id="password" name="password" />
                     <label for="password">Password</label>
-                    @if ($errors->has('password'))
-                        <div class="mt-2 text-danger">
-                            {{ $errors->first('password') }}
+                    @if ($errors->userDeletion->has('password'))
+                        <div class="mt-2 text-danger small">
+                            {{ $errors->userDeletion->first('password') }}
                         </div>
                     @endif
                 </div>
@@ -91,6 +91,7 @@
                 </div> --}}
                 <button type="submit" class="btn btn-secondary deactivate-account">Deactivate
                     Account</button>
+
         </form>
     </div>
 </div>

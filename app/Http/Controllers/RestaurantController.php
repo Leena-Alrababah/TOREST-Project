@@ -47,8 +47,7 @@ class RestaurantController extends Controller
             'description' => ['required'],
             'discount_percentage' => ['required', 'numeric', 'between:0,100'],
             'dishes_type' => ['required'],
-            'provider' => ['required', 'exists:users,id'], // Add validation for provider ID
-            // Add other relevant validation rules as needed
+            'provider' => ['required', 'exists:users,id'], 
         ]);
 
         $filenames = [];

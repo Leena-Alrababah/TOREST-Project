@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\Reservation;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ProfileController extends Controller
 {
@@ -16,23 +18,56 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): View
     {
+        $reservations = Reservation::where('user_id', Auth::user()->id)->get();
+        // dd($reservations);
         return view('profile.edit', [
             'user' => $request->user(),
+            'reservations' => $reservations ,
         ]);
     }
 
     /**
      * Update the user's profile information.
      */
+    // public function update(ProfileUpdateRequest $request): RedirectResponse
+    // {
+    //     $request->user()->fill($request->validated());
+
+    //     if ($request->user()->isDirty('email')) {
+    //         $request->user()->email_verified_at = null;
+    //     }
+
+    //     $request->user()->save();
+
+    //     return Redirect::route('profile.edit')->with('status', 'profile-updated');
+    // }
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
-        $request->user()->fill($request->validated());
+        $user = $request->user();
 
-        if ($request->user()->isDirty('email')) {
-            $request->user()->email_verified_at = null;
+        // Handle image upload
+        $imagePath = "";
+        if ($request->hasFile('image')) {
+            $imagePath = $request->getSchemeAndHttpHost() . '/uploads/' . time() . '.' . $request->image->extension();
+            $request->image->move(public_path('/uploads/'), $imagePath);
+        } else {
+            $imagePath = 'backend/assets/img/avatars/11.png';
         }
 
-        $request->user()->save();
+        // Update phone number
+        $user->image = $imagePath;
+
+        $user->phone = $request->phone;
+
+
+        // Update other fields
+        $user->fill($request->validated());
+
+        if ($user->isDirty('email')) {
+            $user->email_verified_at = null;
+        }
+
+        $user->save();
 
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }
@@ -54,6 +89,7 @@ class ProfileController extends Controller
 
         $request->session()->invalidate();
         $request->session()->regenerateToken();
+        Alert::success('Success', 'Your account is deleted successfully!');
 
         return Redirect::to('/');
     }

@@ -27,7 +27,7 @@
                         
                          <div class="mb-2" style="font-size: larger;">
                     <span class="fa fa-clock text-dark"style="margin-right: 10px;"></span>
-                    <span class="text-dark">{{$restaurant->opening_hours_from}} - {{$restaurant->opening_hours_to}} </span>
+                    <span class="text-dark"> {{ \Carbon\Carbon::parse($restaurant->opening_hours_from)->format('h:i A') }} - {{ \Carbon\Carbon::parse($restaurant->opening_hours_to)->format('h:i A') }} </span>
                   </div>
                   <div class="mb-4" style="font-size: larger;">
                     <span class="fa fa-location-arrow text-dark "style="margin-right: 10px;"></span>

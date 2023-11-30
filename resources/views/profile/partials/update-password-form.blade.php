@@ -59,9 +59,9 @@
                     <div class="form-floating form-floating-outline">
                         <input class="form-control" name="current_password" type="password" id="password" />
                         <label for="password">Current Password</label>
-                        @if ($errors->has('current_password'))
-                            <div class="mt-2 text-danger">
-                                {{ $errors->first('current_password') }}
+                        @if ($errors->updatePassword->has('current_password'))
+                            <div class="mt-2 text-danger small">
+                                {{ $errors->updatePassword->first('current_password') }}
                             </div>
                         @endif
                     </div>
@@ -72,12 +72,13 @@
                     <div class="form-floating form-floating-outline">
                         <input class="form-control" type="password" id="password" name="password" />
                         <label for="password">New Password</label>
-                        @if ($errors->has('password'))
-                            <div class="mt-2 text-danger">
-                                {{ $errors->first('password') }}
+                        @if ($errors->updatePassword->has('password'))
+                            <div class="mt-2 text-danger small">
+                                {{ $errors->updatePassword->first('password') }}
                             </div>
                         @endif
                     </div>
+
                 </div>
             </div>
             <div class="row mt-2 gy-4">
@@ -85,9 +86,9 @@
                     <div class="form-floating form-floating-outline">
                         <input class="form-control" name="password_confirmation" type="password" id="password" />
                         <label for="password">Confirm New Password</label>
-                        @if ($errors->has('password_confirmation'))
-                            <div class="mt-2 text-danger">
-                                {{ $errors->first('password_confirmation')}}
+                        @if ($errors->updatePassword->has('password_confirmation'))
+                            <div class="mt-2 text-danger small">
+                                {{ $errors->updatePassword->first('password_confirmation') }}
                             </div>
                         @endif
                     </div>
@@ -101,9 +102,11 @@
                     <label class="form-check-label" for="accountActivation">I confirm my account deactivation</label>
                 </div> --}}
                 <button type="submit" class="btn btn-dark">Update Password</button>
+
                 @if (session('status') === 'password-updated')
-                    <p x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 2000)"
-                        class="text-sm text-gray-600">{{ __('Saved.') }}</p>
+                    <?php
+                    Alert::success('Success', 'Your password is updated successfully!');
+                    ?>
                 @endif
             </div>
         </form>

@@ -2,10 +2,11 @@
 
 namespace App\Models;
 
+use App\Models\Restaurant;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\User;
-use App\Restaurant;
+// use App\Restaurant;
 
 
 class Reservation extends Model

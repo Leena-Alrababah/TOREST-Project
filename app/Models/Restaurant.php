@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -96,6 +97,8 @@ class Restaurant extends Model
     // to Check Open Status
     public function isOpenNow()
     {
+        // $currentDateTime = Carbon::now();
+        // echo $currentDateTime;
         $now = now(); // Current time
         $openingHour = $this->opening_hour; // Retrieve from the model
         $closingHour = $this->closing_hour; // Retrieve from the model
