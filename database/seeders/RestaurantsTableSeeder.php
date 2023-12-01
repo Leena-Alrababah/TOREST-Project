@@ -14,22 +14,22 @@ class RestaurantsTableSeeder extends Seeder
         // Define restaurant data
         $restaurants = [
             [
-                'user_id' => 2,
+                'user_id' => 3,
                 'name' => 'STEEL Restaurant & Cafe',
                 'image1' => 'frontend/img2/steel.jpg',
-                'image2' => 'frontend/img2/haram.jpg',
-                'image3' => 'frontend/img2/haram.jpg',
-                'image4' => 'frontend/img2/haram.jpg',
+                'image2' => 'frontend/img2/steel-bg1.jpg',
+                'image3' => 'frontend/img2/steel-bg2.jpg',
+                'image4' => 'frontend/img2/steel-bg3.jpg',
                 'opening_hours_from' => '09:00',
-                'opening_hours_to' => '20:00',
+                'opening_hours_to' => '23:00',
                 'address' => 'Wasfi Al-Tal Street Steel Restaurant & Cafe, Irbid, Jordan',
                 'location' => 'https://goo.gl/maps/qW1ozVuewurwsonq9',
-                'description' => 'Description for Restaurant 1',
+                'description' => 'Welcome to the home of The Jordan Legend, Steel! Immerse yourself in an iconic destination that epitomizes the essence of the North. Our restaurant is more than just a place to dine; it\'s a culinary experience that transcends the ordinary. From the moment you step through our doors, you\'ll discover a fusion of flavors, a celebration of culture, and a commitment to excellence.',
                 'discount_percentage' => 15,
                 'dishes_type' => 'Italian',
             ],
             [
-                'user_id' => 3,
+                'user_id' => 4,
                 'name' => 'Ghosn Restaurant & Cafe',
                 'image1' => 'frontend/img2/ghosn.jpg',
                 'image2' => 'frontend/img2/ghosn.jpg',
@@ -44,7 +44,7 @@ class RestaurantsTableSeeder extends Seeder
                 'dishes_type' => 'Mexican',
             ],
             [
-                'user_id' => 4,
+                'user_id' => 5,
                 'name' => 'Grill Mark Restaurant',
                 'image1' => 'frontend/img2/grilmark.jpg',
                 'image2' => 'frontend/img2/grilmark.jpg',
