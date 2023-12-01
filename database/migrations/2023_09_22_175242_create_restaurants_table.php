@@ -30,7 +30,7 @@ return new class extends Migration
             // $table->timestamp('created_at'); // Created_at and updated_at timestamps
             $table->timestamps(); // Created_at and updated_at timestamps
 
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
         });
     }

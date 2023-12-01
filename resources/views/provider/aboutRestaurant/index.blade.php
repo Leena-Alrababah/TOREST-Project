@@ -10,9 +10,7 @@
             <div class="card">
                 <div class="card-datatable table-responsive">
                     <h4 class="card-header">Manage Restaurant Information</h4>
-                    <button type="button" class="btn btn-success " style="margin: 20px ;">
-                        <a href="{{ route('dashboard.restaurants.create') }}" class="text-white">+ Add Restaurant</a>
-                    </button>
+                    
 
                     <div class="card-body">
                         {{ $dataTable->table() }}

@@ -113,9 +113,16 @@ class RestaurantController extends Controller
      */
     public function edit($id)
     {
-        $providerUsers = User::where('role', 'provider')->get();
+        $isAdmin = auth()->user()->role == 'admin';
         $restaurant = Restaurant::findOrFail($id);
-        return view('admin.restaurants.edit', compact('restaurant' , 'providerUsers'));
+
+        if ($isAdmin) {
+            $providerUsers = User::where('role', 'provider')->get();
+            return view('admin.restaurants.edit', compact('restaurant', 'providerUsers'));
+                } else {
+            return view('provider.aboutRestaurant.edit', compact('restaurant'));
+        }
+        
     }
 
 
@@ -124,6 +131,8 @@ class RestaurantController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $isAdmin = auth()->user()->role == 'admin';
+
         $request->validate([
             'name' => 'required|max:255',
             'image1' => 'image|max:2048', // Image 1
@@ -137,7 +146,8 @@ class RestaurantController extends Controller
             'description' => 'required',
             'discount_percentage' => 'required|numeric|between:0,100',
             'dishes_type' => 'required',
-            'provider' => 'required|exists:users,id', 
+            'provider' => $isAdmin ? 'required|exists:users,id' : '', // Only validate if the user is an admin
+ 
         ]);
 
         $restaurant = Restaurant::findOrFail($id);
@@ -157,6 +167,7 @@ class RestaurantController extends Controller
             }
         }
 
+        
         // Update the restaurant attributes
         $restaurant->name = $request->name;
         $restaurant->image1 = $filenames[0];
@@ -171,8 +182,12 @@ class RestaurantController extends Controller
         $restaurant->description = $request->description;
         $restaurant->discount_percentage = $request->discount_percentage;
         $restaurant->dishes_type = $request->dishes_type;
-        $restaurant->user_id = $request->provider; // Associate the provider with the restaurant
         // Set other restaurant attributes as needed
+
+
+        $providerId = $isAdmin ? $request->provider : auth()->user()->id;
+        $restaurant->user_id = $providerId;
+
 
         $restaurant->save();
 

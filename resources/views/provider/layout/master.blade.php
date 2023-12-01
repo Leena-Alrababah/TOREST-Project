@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-   {{-- <html lang="en" class="light-style layout-navbar-fixed layout-menu-fixed layout-compact " dir="ltr"
+{{-- <html lang="en" class="light-style layout-navbar-fixed layout-menu-fixed layout-compact " dir="ltr"
     data-theme="theme-default" data-assets-path="../../assets/" data-template="vertical-menu-template">
  --}}
 
@@ -8,98 +8,99 @@
 
 
 
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="csrf-token" content="{{ csrf_token() }}">
 
-        {{-- <title>{{ config('app.name', 'Laravel') }}</title> --}}
-        <title>TOREST - ADMIN</title>
-
-
-    <meta name="description" content="Start your development with a Dashboard for Bootstrap 5" />
-    <meta name="keywords"
-        content="dashboard, material, material design, bootstrap 5 dashboard, bootstrap 5 design, bootstrap 5">
-    <!-- Canonical SEO -->
-    <link rel="canonical" href="https://themeselection.com/item/materio-bootstrap-html-admin-template/">
+{{-- <title>{{ config('app.name', 'Laravel') }}</title> --}}
+<title>TOREST - ADMIN</title>
 
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-        <script>
-        (function(w, d, s, l, i) {
-            w[l] = w[l] || [];
-            w[l].push({
-                'gtm.start': new Date().getTime(),
-                event: 'gtm.js'
-            });
-            var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s),
-                dl = l != 'dataLayer' ? '&l=' + l : '';
-            j.async = true;
-            j.src =
-                '../../../../www.googletagmanager.com/gtm5445.html?id=' + i + dl;
-            f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-5DDHKGP');
-    </script>
-    <!-- End Google Tag Manager -->
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon"
-        href="https://demos.themeselection.com/materio-bootstrap-html-admin-template/assets/img/favicon/favicon.ico" />
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com/">
-    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;ampdisplay=swap"
-        rel="stylesheet">
-
-    <!-- Icons -->
-    <link rel="stylesheet" href="{{ asset('backend/assets/vendor/fonts/materialdesignicons.css') }}" />
-    <link rel="stylesheet" href="{{ asset('backend/assets/vendor/fonts/flag-icons.css') }}" />
-    {{-- <link rel="stylesheet" href="{{ asset('backend/assets/modules/fontawesome/css/all.min.css') }}"> --}}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
+<meta name="description" content="Start your development with a Dashboard for Bootstrap 5" />
+<meta name="keywords"
+    content="dashboard, material, material design, bootstrap 5 dashboard, bootstrap 5 design, bootstrap 5">
+<!-- Canonical SEO -->
+<link rel="canonical" href="https://themeselection.com/item/materio-bootstrap-html-admin-template/">
 
 
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.bunny.net">
+<link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
-    <!-- Menu waves for no-customizer fix -->
-    <link rel="stylesheet" href="{{ asset('backend/assets/vendor/libs/node-waves/node-waves.css') }}" />
+<!-- Scripts -->
+@vite(['resources/css/app.css', 'resources/js/app.js'])
+<script>
+    (function(w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({
+            'gtm.start': new Date().getTime(),
+            event: 'gtm.js'
+        });
+        var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s),
+            dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src =
+            '../../../../www.googletagmanager.com/gtm5445.html?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-5DDHKGP');
+</script>
+<!-- End Google Tag Manager -->
 
-    <!-- Core CSS -->
-    <link rel="stylesheet" href="{{ asset('backend/assets/vendor/css/rtl/core.css') }}"
-        class="template-customizer-core-css" />
-    <link rel="stylesheet" href="{{ asset('backend/assets/vendor/css/rtl/theme-default.css') }}"
-        class="template-customizer-theme-css" />
-    <link rel="stylesheet" href="{{ asset('backend/assets/css/demo.css') }}" />
+<!-- Favicon -->
+<link rel="icon" type="image/x-icon"
+    href="https://demos.themeselection.com/materio-bootstrap-html-admin-template/assets/img/favicon/favicon.ico" />
 
-    <!-- Vendors CSS -->
-    <link rel="stylesheet" href="{{ asset('backend/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css') }}" />
-    <link rel="stylesheet" href="{{ asset('backend/assets/vendor/libs/typeahead-js/typeahead.css') }}" />
-    <link rel="stylesheet" href="{{ asset('backend/assets/vendor/libs/apex-charts/apex-charts.css') }}" />
-    <link rel="stylesheet" href="//cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
-    {{-- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"> --}}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;ampdisplay=swap"
+    rel="stylesheet">
 
-
-    <!-- Page CSS -->
-    <link rel="stylesheet" href="{{ asset('backend/assets/vendor/css/pages/app-ecommerce-dashboard.css') }}" />
-
-    <!-- Helpers -->
-    <script src="{{ asset('backend/assets/vendor/js/helpers.js') }}"></script>
-    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
-    <!--? Template customizer: To hide customizer set displayCustomizer value false in config.js.  -->
-    <script src="{{ asset('backend/assets/vendor/js/template-customizer.js') }}"></script>
-    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
-    <script src="{{ asset('backend/assets/js/config.js') }}"></script>
+<!-- Icons -->
+<link rel="stylesheet" href="{{ asset('backend/assets/vendor/fonts/materialdesignicons.css') }}" />
+<link rel="stylesheet" href="{{ asset('backend/assets/vendor/fonts/flag-icons.css') }}" />
+{{-- <link rel="stylesheet" href="{{ asset('backend/assets/modules/fontawesome/css/all.min.css') }}"> --}}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
 
 
-    </head>
-    <body class="font-sans antialiased">
-         <!-- ?PROD Only: Google Tag Manager (noscript) (Default ThemeSelection: GTM-5DDHKGP, PixInvent: GTM-5J3LMKC) -->
+
+<!-- Menu waves for no-customizer fix -->
+<link rel="stylesheet" href="{{ asset('backend/assets/vendor/libs/node-waves/node-waves.css') }}" />
+
+<!-- Core CSS -->
+<link rel="stylesheet" href="{{ asset('backend/assets/vendor/css/rtl/core.css') }}"
+    class="template-customizer-core-css" />
+<link rel="stylesheet" href="{{ asset('backend/assets/vendor/css/rtl/theme-default.css') }}"
+    class="template-customizer-theme-css" />
+<link rel="stylesheet" href="{{ asset('backend/assets/css/demo.css') }}" />
+
+<!-- Vendors CSS -->
+<link rel="stylesheet" href="{{ asset('backend/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css') }}" />
+<link rel="stylesheet" href="{{ asset('backend/assets/vendor/libs/typeahead-js/typeahead.css') }}" />
+<link rel="stylesheet" href="{{ asset('backend/assets/vendor/libs/apex-charts/apex-charts.css') }}" />
+<link rel="stylesheet" href="//cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+{{-- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"> --}}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
+
+<!-- Page CSS -->
+<link rel="stylesheet" href="{{ asset('backend/assets/vendor/css/pages/app-ecommerce-dashboard.css') }}" />
+
+<!-- Helpers -->
+<script src="{{ asset('backend/assets/vendor/js/helpers.js') }}"></script>
+<!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
+<!--? Template customizer: To hide customizer set displayCustomizer value false in config.js.  -->
+<script src="{{ asset('backend/assets/vendor/js/template-customizer.js') }}"></script>
+<!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
+<script src="{{ asset('backend/assets/js/config.js') }}"></script>
+
+
+</head>
+
+<body class="font-sans antialiased">
+    <!-- ?PROD Only: Google Tag Manager (noscript) (Default ThemeSelection: GTM-5DDHKGP, PixInvent: GTM-5J3LMKC) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5DDHKGP" height="0" width="0"
             style="display: none; visibility: hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
@@ -107,6 +108,7 @@
     <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar  ">
         <div class="layout-container">
+            @include('sweetalert::alert')
 
             @include('provider.layout.sidebar')
 
@@ -130,7 +132,7 @@
     <!-- / Layout wrapper -->
 
 
-    
+
 
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
@@ -164,7 +166,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
- <script>
+    <script>
         @if ($errors->any())
             @foreach ($errors->all() as $error)
                 toastr.error("{{ $error }}")
@@ -258,7 +260,8 @@
             $('#myTable').DataTable();
         });
     </script>
-    
+
     @stack('scripts')
-    </body>
+</body>
+
 </html>

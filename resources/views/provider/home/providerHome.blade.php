@@ -22,7 +22,7 @@
                                             </div>
                                         </div>
                                         <div class="col-12 col-md-6 position-relative text-center">
-                                            <img src="../../assets/img/illustrations/illustration-john-2.png"
+                                            <img src="{{ asset("backend/assets/img/illustrations/illustration-john-2.png")}}"
                                                 class="card-img-position bottom-0 w-auto end-0 scaleX-n1-rtl"
                                                 alt="View Profile">
                                         </div>

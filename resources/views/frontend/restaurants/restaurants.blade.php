@@ -77,7 +77,7 @@
         <div class="col-lg-10">
             <div class="restaurant-list justify-content-center">
                 <div class="text-center wow fadeInUp " data-wow-delay="0.1s">
-                    <h1 class="mb-5 text-center">Best Restaurants & Cafes in Irbid:</h1>
+                    <h1 class="mb-5 text-center">The Restaurants & Cafes in Irbid:</h1>
                 </div>
                 <br />
                 <div class="row g-4 justify-content-center">

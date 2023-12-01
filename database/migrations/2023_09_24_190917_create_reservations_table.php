@@ -26,9 +26,9 @@ return new class extends Migration
             $table->timestamps(); // Created_at and updated_at timestamps
 
             // Define foreign key relationships
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('restaurant_id')->references('id')->on('restaurants');
-            $table->foreign('table_id')->references('id')->on('tables');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('restaurant_id')->references('id')->on('restaurants')->onDelete('cascade');
+            $table->foreign('table_id')->references('id')->on('tables')->onDelete('cascade');
 
         });
     }

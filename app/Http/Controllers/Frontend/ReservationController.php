@@ -207,6 +207,6 @@ class ReservationController extends Controller
 
     public function cancel()
     {
-        return redirect()->route('dashboard.home')->with('error', 'Payment is cancelled!');
+        return redirect()->route('home')->with('error', 'Payment is cancelled!');
     }
 }

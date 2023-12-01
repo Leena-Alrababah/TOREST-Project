@@ -35,7 +35,8 @@ class ProviderController extends Controller
             'image' => ['image'],
             'name' => ['required', 'max:20'],
             'email' => ['required', 'email', 'unique:users,email'],
-            'phone' => ['nullable', 'digits:10'],'password' => [
+            'phone' => ['nullable', 'digits:10'],
+            'password' => [
                 'required',
                 'min:8',              // Minimum length of 8 characters
                 'regex:/[A-Z]/',      // At least one uppercase letter

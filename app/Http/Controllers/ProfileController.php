@@ -52,6 +52,12 @@ class ProfileController extends Controller
     // }
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
+        $request->validate([
+            // 'email' => ['required', 'email', 'unique:users,email'],
+            'phone' => ['nullable', 'digits:10'],
+
+        ]);
+
         $user = $request->user();
 
         // Handle image upload
