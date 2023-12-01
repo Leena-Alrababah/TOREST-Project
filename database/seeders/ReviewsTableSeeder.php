@@ -35,7 +35,6 @@ class ReviewsTableSeeder extends Seeder
                 'review_text' => 'Average experience.',
                 'rating' => 2,
             ],
-            // Add more reviews as needed
         ];
 
         // Insert reviews into the 'reviews' table
