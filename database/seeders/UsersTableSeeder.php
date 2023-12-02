@@ -44,9 +44,9 @@ class UsersTableSeeder extends Seeder
 
         // Create two customer users
         User::create([
-            'name' => 'Customer 1',
-            'email' => 'customer1@example.com',
-            'phone' => '1231231234',
+            'name' => 'Marah Abusaleh',
+            'email' => 'marah.abusaleh12@gmail.com',
+            'phone' => '0791579601',
             'password' => Hash::make('password'),
             'image' => 'http://127.0.0.1:8000/backend/assets/img/avatars/11.png',
             'role' => 'customer',

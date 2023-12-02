@@ -28,7 +28,8 @@ return new class extends Migration
             $table->string('dishes_type'); // Dishes type (e.g., 'Italian', 'Mexican', 'Japanese')
             // Add other relevant fields as needed
             // $table->timestamp('created_at'); // Created_at and updated_at timestamps
-            $table->timestamps(); // Created_at and updated_at timestamps
+            $table->timestamp('created_at'); // Created_at and updated_at timestamps
+            $table->timestamp('updated_at')->nullable(); // Created_at and updated_at timestamps
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 

@@ -15,7 +15,7 @@ class ReservationsTableSeeder extends Seeder
         // Define reservation data
         $reservations = [
             [
-                'user_id' => 8,
+                'user_id' => 15,
                 'restaurant_id' => 1,
                 'table_id' => 1,
                 'reservation_date' => '2023-10-15',
@@ -25,7 +25,7 @@ class ReservationsTableSeeder extends Seeder
                 'phone' => '123-456-7890',
             ],
             [
-                'user_id' => 8,
+                'user_id' => 16,
                 'restaurant_id' => 1,
                 'table_id' => 2,
                 'reservation_date' => '2023-10-16',
@@ -35,7 +35,7 @@ class ReservationsTableSeeder extends Seeder
                 'phone' => '987-654-3210',
             ],
             [
-                'user_id' => 8,
+                'user_id' => 16,
                 'restaurant_id' => 2,
                 'table_id' => 3,
                 'reservation_date' => '2023-10-15',
@@ -45,7 +45,7 @@ class ReservationsTableSeeder extends Seeder
                 'phone' => '123-456-7890',
             ],
             [
-                'user_id' => 8,
+                'user_id' => 16,
                 'restaurant_id' => 2,
                 'table_id' => 4,
                 'reservation_date' => '2023-10-16',

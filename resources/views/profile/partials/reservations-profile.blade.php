@@ -1,5 +1,5 @@
 <div class="card mb-4">
-    <h4 class="card-header fw-normal">Update Password</h4>
+    <h4 class="card-header fw-normal">My Reservation</h4>
     <div class="card-body">
         {{-- <form id="formAccountDeactivation" onsubmit="return false"> --}}
         <table class="table text-center mb_50">

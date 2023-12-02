@@ -23,6 +23,16 @@ class TablesTableSeeder extends Seeder
                 'capacity' => 6,
             ],
             [
+                'restaurant_id' => 1,
+                'name' => 'Table 3',
+                'capacity' => 8,
+            ],
+            [
+                'restaurant_id' => 1,
+                'name' => 'Table 4',
+                'capacity' => 10,
+            ],
+            [
                 'restaurant_id' => 2,
                 'name' => 'Table 1',
                 'capacity' => 2,
