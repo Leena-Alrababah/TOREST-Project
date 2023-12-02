@@ -109,10 +109,7 @@
 
                         </div>
                         <div class="content">
-                            <div class="checkbox">
-                                <input type="checkbox" id="remember-me">
-                                <label for="remember-me" name="remember">Remember me</label>
-                            </div>
+
                             <div class="pass-link">
                                 <a href="{{ route('password.request') }}">Forgot password?</a>
                             </div>
