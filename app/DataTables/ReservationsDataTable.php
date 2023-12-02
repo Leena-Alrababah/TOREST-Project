@@ -154,7 +154,6 @@ class ReservationsDataTable extends DataTable
                 Column::make('name'),
                 Column::make('email'),
                 Column::make('phone'),
-                Column::make('status'),
             ];
         } else {
             return [
@@ -167,7 +166,6 @@ class ReservationsDataTable extends DataTable
                 Column::make('name'),
                 Column::make('email'),
                 Column::make('phone'),
-                Column::make('status'),
                 Column::computed('action')
                     ->exportable(false)
                     ->printable(false)

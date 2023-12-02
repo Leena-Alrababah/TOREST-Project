@@ -29,11 +29,11 @@
                     </div>
                     <div class="text-center p-4 card fixed-height-card">
                         <h3 class="mb-0">{{ $restaurant->name }}</h3>
-                        <div class="mb-3">
+                        <div class="mb-1">
                             {!! $restaurant->ratingStars !!}
                             <p>{!! $restaurant->reviewsCount !!} Reviews</p>
                         </div>
-                        <p>{{ $restaurant->dishes_type }}
+                        <p><strong>Best Dish: </strong>{{ $restaurant->dishes_type }}
                         </p>
                         <div class="d-flex justify-content-center mb-2">
                             <a href="{{ route('restaurants.show', $restaurant->id) }}"

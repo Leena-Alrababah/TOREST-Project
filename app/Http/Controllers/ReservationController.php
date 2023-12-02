@@ -58,7 +58,7 @@ class ReservationController extends Controller
             'name' => ['required', 'max:255'],
             'email' => ['required', 'email'],
             'phone' => ['required', 'digits:10'],
-            'reservation_status' => ['required'],
+            // 'reservation_status' => ['required'],
             // Add other relevant validation rules as needed
         ]);
 
@@ -78,7 +78,7 @@ class ReservationController extends Controller
         $reservation->name = $request->name;
         $reservation->email = $request->email;
         $reservation->phone = $request->phone;
-        $reservation->reservation_status = $request->reservation_status;
+        // $reservation->reservation_status = $request->reservation_status;
 
         // Set other reservation attributes as needed
 

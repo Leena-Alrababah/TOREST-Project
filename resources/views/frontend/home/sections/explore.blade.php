@@ -31,7 +31,7 @@
 
                             <p>{!! $restaurant->reviewsCount !!} Reviews</p>
                         </div>
-                        <p>{{ $restaurant->dishes_type }}
+                        <p><strong>Best Dish: </strong>{{ $restaurant->dishes_type }}
                         </p>
                         <div class="d-flex justify-content-center mb-2">
                             <a href="{{ route('restaurants.show', $restaurant->id) }}" class="btn btn-sm btn-primary px-3 border-end"

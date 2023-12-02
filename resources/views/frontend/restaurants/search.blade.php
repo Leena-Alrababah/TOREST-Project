@@ -62,7 +62,7 @@
                                             {!! $restaurant->ratingStars !!}
                                             <p>{!! $restaurant->ReviewsCount !!} Reviews</p>
                                         </div>
-                                        <p>Burger / Lunch / Dinner / Trendy / Healthy</p>
+                                        <p><strong>Best Dish: </strong>{{ $restaurant->dishes_type }}</p>
                                         <div class="d-flex justify-content-center mb-2">
                                             <a href="{{ route('restaurants.show', $restaurant->id) }}"
                                                 class="btn btn-sm btn-primary px-3 border-end btncard"

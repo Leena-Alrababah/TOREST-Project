@@ -22,14 +22,15 @@
                         <img alt="image" src="{{ Auth::user()->image }}" style="width: 50px; height: 50px; border-radius: 50%;">
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
-                        <div class="dropdown-title">{{ Auth::user()->name }}</div>
+                        <div class="dropdown-title" style="margin-top: 5px; margin-left: 18px">{{ Auth::user()->name }}</div>
+                        <div class="dropdown-divider"></div>
                         <a href="{{ route('profile.edit') }}" class="dropdown-item has-icon">
                             <i class="far fa-user"></i> Profile
                         </a>
                         <div class="dropdown-divider"></div>
                         <form action="{{ route('logout') }}" method="POST">
                             @csrf
-                            <button type="submit" class="btn btn-primary btn-lg btn-block">Logout</button>
+                            <center><button type="submit" class="btn btn-primary btn-lg btn-block" style="font-size: 15px; margin-bottom:10px" >Logout</button></center>
                         </form>
                     </div>
                 </div>

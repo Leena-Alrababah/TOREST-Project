@@ -46,10 +46,7 @@
     })(window, document, 'script', 'dataLayer', 'GTM-5DDHKGP');
 </script>
 <!-- End Google Tag Manager -->
-
-<!-- Favicon -->
-<link rel="icon" type="image/x-icon"
-    href="https://demos.themeselection.com/materio-bootstrap-html-admin-template/assets/img/favicon/favicon.ico" />
+<link rel="shortcut icon" type="image/png" href="{{ asset('frontend/img2/Clogo.png') }}" />
 
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com/">

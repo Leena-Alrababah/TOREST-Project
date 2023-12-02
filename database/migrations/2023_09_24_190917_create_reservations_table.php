@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('name')->nullable(); // Guest's name
             $table->string('email')->nullable(); // Guest's email
             $table->string('phone')->nullable(); // Guest's phone number
-            $table->string('reservation_status'); // Reservation status (e.g., confirmed, pending)
+            // $table->string('reservation_status'); // Reservation status (e.g., confirmed, pending)
             $table->timestamps(); // Created_at and updated_at timestamps
 
             // Define foreign key relationships

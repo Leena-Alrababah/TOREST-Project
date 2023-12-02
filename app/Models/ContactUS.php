@@ -21,7 +21,7 @@ class ContactUS extends Model
 
         static::created(function ($item) {
 
-            $adminEmail = "leenaalrababah@gmail.com";
+            $adminEmail = "websitetorest@gmail.com";
             Mail::to($adminEmail)->send(new ContactMail($item));
         });
     }

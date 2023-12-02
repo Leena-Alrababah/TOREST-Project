@@ -102,13 +102,24 @@ class ReservationController extends Controller
         // $table_id = $request->input('table_id');
         // dd($table_id);
         // Validate the form data
-        $request->validate([
-            'table_id' => 'required|exists:tables,id', // Make sure the selected table exists
-            'name' => 'required|string|min:4',
-            'email' => 'required|email',
-            'phone' => 'required',
-
-        ]);
+        $request->validate(
+            [
+                'table_id' => 'required|exists:tables,id', // Make sure the selected table exists
+                'name' => 'required|string|min:3',
+                'email' => 'required|email',
+                'phone' => 'required|digits:10',
+            ],
+            [
+                'table_id.required' => 'Please select a table.',
+                'table_id.exists' => 'The selected table does not exist.',
+                'name.required' => 'Please enter your name.',
+                'name.string' => 'Name must be a string.',
+                'name.min' => 'Name must be at least 3 characters.',
+                'email.required' => 'Please enter your email address.',
+                'email.email' => 'Please enter a valid email address.',
+                'phone.required' => 'Please enter your phone number.',
+            ]
+        );
 
 
         $provider = new PayPalClient;
@@ -124,7 +135,7 @@ class ReservationController extends Controller
                 [
                     "amount" => [
                         "currency_code" => "USD",
-                        "value" => 7
+                        "value" => 7.07
                     ]
                 ]
             ]
@@ -181,7 +192,7 @@ class ReservationController extends Controller
             $reservation->table_id = $payment['table_id'];
             $reservation->reservation_date = $payment['date'];
             $reservation->reservation_time = $payment['time'];
-            $reservation->reservation_status = 'pending';
+            // $reservation->reservation_status = 'pending';
             $reservation->name = $payment ['name'];
             $reservation->email = $payment['email'];
             $reservation->phone = $payment['phone'];

@@ -23,7 +23,6 @@ class ReservationsTableSeeder extends Seeder
                 'name' => 'Guest 1',
                 'email' => 'guest1@example.com',
                 'phone' => '123-456-7890',
-                'reservation_status' => 'pending',
             ],
             [
                 'user_id' => 8,
@@ -34,7 +33,6 @@ class ReservationsTableSeeder extends Seeder
                 'name' => 'Guest 2',
                 'email' => 'guest2@example.com',
                 'phone' => '987-654-3210',
-                'reservation_status' => 'pending',
             ],
             [
                 'user_id' => 8,
@@ -45,7 +43,6 @@ class ReservationsTableSeeder extends Seeder
                 'name' => 'Guest 1',
                 'email' => 'guest1@example.com',
                 'phone' => '123-456-7890',
-                'reservation_status' => 'pending',
             ],
             [
                 'user_id' => 8,
@@ -56,7 +53,6 @@ class ReservationsTableSeeder extends Seeder
                 'name' => 'Guest 2',
                 'email' => 'guest2@example.com',
                 'phone' => '987-654-3210',
-                'reservation_status' => 'pending',
             ],
             // Add more reservation data as needed
         ];

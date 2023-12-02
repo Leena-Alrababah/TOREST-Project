@@ -16,8 +16,7 @@
             <li class="nav-item navbar-dropdown dropdown-user dropdown">
                 <a class="nav-link dropdown-toggle hide-arrow p-0" href="javascript:void(0);" data-bs-toggle="dropdown">
                     <div class="avatar avatar-online">
-                        <img src="{{ Auth::user()->image }}" alt
-                            class="w-px-40 h-auto rounded-circle">
+                        <img src="{{ Auth::user()->image }}" alt class="w-px-40 h-auto rounded-circle">
                     </div>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end mt-3 py-2">
@@ -41,24 +40,23 @@
                     </li>
                     <li>
                         <a class="dropdown-item" href="profile.html">
-                            <i class="mdi mdi-account-outline me-1 mdi-20px"></i>
+
                             <span class="align-middle"> <x-dropdown-link :href="route('profile.edit')">
-                            {{ __('Profile') }}
-                        </x-dropdown-link></span>
+                                    <i class="mdi mdi-account-outline me-1 mdi-20px"></i>{{ __('Profile') }}
+                                </x-dropdown-link></span>
                         </a>
                     </li>
 
                     <li>
                         <a class="dropdown-item" href="auth-login-cover.html" target="_blank">
-                            <i class="mdi mdi-logout me-1 mdi-20px"></i>
-                            {{-- <span class="align-middle">Log Out</span> --}}
+
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
 
                                 <x-dropdown-link :href="route('logout')"
                                     onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                                    {{ __('Log Out') }}
+                                    <i class="mdi mdi-logout me-1 mdi-20px"></i>{{ __('Log Out') }}
                                 </x-dropdown-link>
                             </form>
                         </a>

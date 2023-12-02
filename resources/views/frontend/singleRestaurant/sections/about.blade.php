@@ -37,7 +37,7 @@
                 </div>
                 <div class="mb-2" style="font-size: larger;">
                     <span class="fa fa-location-arrow text-dark "style="margin-right: 10px;"></span>
-                    <a href="{{ $restaurant->location }}" class="text-primary">{{ $restaurant->address }}</a>
+                    <a href="{{ $restaurant->location }}" target="blank" class="text-primary">{{ $restaurant->address }}</a>
                 </div>
                 <p class="mb-4">{{ $restaurant->description }}</p>
                 <br>

@@ -78,13 +78,18 @@
                                         @endforeach
                                     </select>
                                     <label for="table_id">Table (No Of People)</label>
+                                    <div class="text-danger small">
+                                        @error('table_id')
+                                            {{ $message }}
+                                        @enderror
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-lg-12">
                                 <div class="form-floating form-floating-outline">
                                     <input type="text" name="name" class="form-control" id="name"
                                         placeholder="Your Name" data-rule="minlen:4"
-                                        data-msg="Please enter at least 4 characters">
+                                        data-msg="Please enter at least 4 characters" value="{{Auth::user()->name}}">
                                     <label for="name">Your Name</label>
                                     <div class="text-danger small">
                                         @error('name')
@@ -95,7 +100,7 @@
                             </div>
                             <div class="col-lg-12">
                                 <div class="form-floating form-floating-outline">
-                                    <input type="email" class="form-control" name="email" id="email"
+                                    <input type="email" class="form-control" name="email" id="email" value="{{Auth::user()->email}}"
                                         placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email">
                                     <label for="email">Your Email</label>
                                     <div class="text-danger small">
@@ -107,10 +112,14 @@
                             </div>
                             <div class="col-lg-12">
                                 <div class="form-floating form-floating-outline">
-                                    <input type="tel" class="form-control phone-mask" name="phone" id="phone"
+                                    <input type="tel" class="form-control phone-mask" name="phone" id="phone" value="{{Auth::user()->phone}}"
                                         placeholder="+(123) 456-7890" aria-label="+(123) 456-7890">
                                     <label for="phone">Your Phone</label>
-                                    <div class="validate"></div>
+                                    <div class="text-danger small">
+                                        @error('phone')
+                                            {{ $message }}
+                                        @enderror
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -122,7 +131,7 @@
                                 <div>
                                     <div class="fa fa-bell d-inline-flex text-primary">
                                         <p class="text-dark" style="margin-left: 10px; font-weight: bold;">To confirm the
-                                            reservation, you should pay 7$, and this amount will be deducted from the bill
+                                            reservation, you should pay 5 JOD, and this amount will be deducted from the bill
                                             value.</p>
                                     </div>
                                 </div>

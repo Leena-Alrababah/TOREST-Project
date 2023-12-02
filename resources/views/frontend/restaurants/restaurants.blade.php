@@ -23,8 +23,8 @@
 
 @section('content')
 <div class="container">
-    <div class="row">
-        <!-- Sidebar Filter -->
+    <div class="row justify-content-center">
+        {{-- <!-- Sidebar Filter -->
         <div class="col-lg-2">
             <div class="filter-container "style="position: sticky; top: 0; background-color: #f8f9fa; z-index: 100;">
                 <strong class="font-weight-bold text-dark">Suggested:</strong>
@@ -71,13 +71,13 @@
                     <label class="form-check-label" for="seafoodCheckbox">Sea Food</label>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
         <!-- Restaurant List -->
         <div class="col-lg-10">
             <div class="restaurant-list justify-content-center">
                 <div class="text-center wow fadeInUp " data-wow-delay="0.1s">
-                    <h1 class="mb-5 text-center">The Restaurants & Cafes in Irbid:</h1>
+                    <h1 class="mb-5 text-center">The Restaurants & Cafes:</h1>
                 </div>
                 <br />
                 <div class="row g-4 justify-content-center">
@@ -102,7 +102,7 @@
                                     {!! $restaurant->ratingStars !!}
                                     <p>{!! $restaurant->ReviewsCount !!} Reviews</p>
                                 </div>
-                                <p>Burger / Lunch / Dinner / Trendy / Healthy</p>
+                                <p><strong>Best Dish: </strong>{{ $restaurant->dishes_type }}</p>
                                 <div class="d-flex justify-content-center mb-2">
                                     <a href="{{route ('restaurants.show', $restaurant->id )}}" class="btn btn-sm btn-primary px-3 border-end btncard" style="border-radius: 30px 3px 30px">See Details</a>
                                 </div>
